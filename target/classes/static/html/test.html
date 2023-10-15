@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign up and sign in form</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="testcss.css">
+</head>
+<body>
+     
+    <div class="wrapper">
+        <div class="container">
+          <div class="register-container">
+            <form>
+              <h1>Create Account</h1>
+              <div class="social-links">
+              </div>
+              <input type="text" placeholder="Enter your username">
+              <input type="password" placeholder="Enter your temporary password">
+              <input type="password" placeholder="Enter your new password">
+              <input type="password" placeholder="Re-Type new password">
+              <button class="login_btn">Sign Up</button>
+            </form>
+          </div>
+          
+          
+          <div class="login-container">
+            <form>
+              <h1>Login into your account</h1>
+              <div class="social-links">
+              </div>
+              <input type="text" placeholder="Enter your username">
+              <input type="password" placeholder="Enter your password">
+              <button class="login_btn">Submit</button>
+            </form>
+          </div>
+          
+          
+          <div class="overlay-container">
+            <div class="overlay-left">
+              <h1>Welcome Back</h1>
+              <p>To keep connected with us please login with your personal information</p>
+              <button id="signIn" class="overlay_btn">Sign In</button>
+            </div>
+            <div class="overlay-right">
+              <h1>Hello user, </h1>
+              <p>Are you a first time/New user user? Click below</p>
+              <button id="signUp" class="overlay_btn">New users</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+           
+          const signUpBtn = document.getElementById("signUp");
+            const signInBtn = document.getElementById("signIn");
+            const container = document.querySelector(".container");
+ 
+            signUpBtn.addEventListener("click",() =>{
+                container.classList.add("right-panel-active");
+ 
+            })
+            signInBtn.addEventListener("click",() =>{
+                container.classList.remove("right-panel-active")
+            })
+      
+      </script>
+       
+</body>
+</html>

@@ -1,0 +1,73 @@
+/* Apply a reset to remove default margins and paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+  background-color: #f1f1f1; /* Set the background color for the body */
+}
+
+.container {
+  width: 75%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.fixed-header, .fixed-footer {
+  width: 100%;
+  position: fixed;
+  background: #131946;
+  padding: 8px 0;
+  color: #fff;
+}
+
+.fixed-header {
+  top: 0;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fixed-footer {
+  bottom: 0;
+  text-align: center;
+}
+
+.logo {
+  max-width: 350px; /* Increase the maximum width to make the logo larger */
+  margin: 0 auto; /* Center the logo horizontally */
+  display: block;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align navigation to the right */
+
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0 0px; /* Adjust padding for navigation items */
+  font-size: 18px; /* Increase the font size for better visibility */
+}
+
+/* Style the navigation as a menu bar */
+nav a:hover {
+  background: white; /* Change background color on hover */
+  transition: 0.5s;
+  text-transform: uppercase;
+   color: #131946;
+}
+
+/* Add some spacing between navigation items */
+nav a + a {
+  margin-left: 40px; /* Adjust spacing between navigation items */
+}
