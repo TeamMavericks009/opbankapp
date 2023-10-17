@@ -14,8 +14,8 @@
  */
 
 create table if not exists dbo.user_login(user_login_id         bigint,
-    									  login_id              varchar(50) not null,
-    									  encrypted_password    bytea not null,
+										  login_id              varchar(50) not null,
+    									  encrypted_password    text not null,
     									  pswd_last_modified_on timestamp,
     									  ip_address            inet not null,
     									  user_name             varchar(30) not null,
@@ -25,7 +25,7 @@ create table if not exists dbo.user_login(user_login_id         bigint,
     									  updated_date          timestamptz,
     									  constraint user_login_pk primary key(user_login_id),
     									  constraint user_login_login_id_ak unique(login_id),
-    									  constraint user_login_user_login_id_fk foreign key(user_login_id) references dbo.user_login(user_login_id)
+    									  constraint user_login_user_login_id_fk foreign key(user_login_id) references dbo.users(user_id)
 									      );
 create sequence if not exists dbo.user_login_seq as bigint 
                  increment by 1 
