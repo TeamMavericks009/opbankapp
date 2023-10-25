@@ -1,0 +1,142 @@
+body {
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+   
+.profile_container{
+    position: absolute;
+    left: 12%;
+    top: 55%;
+    height: 72%;
+    transform: translate(-50%, -50%);
+    background: rgba(211, 211, 211, 0.4);
+    padding: 20px;
+    text-align: center;
+    border-radius: 20px;
+    width: 350px;
+}
+
+.bg img{
+    width:200px;
+    height: 200px;
+    border-radius: 50%;
+    border:5px solid #000;
+}
+   
+.profile_header {
+    margin-top: 20px; /* Add space between image and header */
+}
+
+h3{
+	color: red;
+	text-align: left;
+	text-decoration: underline;
+	padding: 12px;
+	font-size: 24px;
+}
+
+.account_summary {
+    width: 350px;
+    margin-top: 20px;
+    border-collapse: collapse;
+    text-align: left;
+    font-weight: bold;
+     font-size: 18px;
+}
+
+.account_summary td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    font-weight:bold;
+    font-size: 18px;
+}
+
+
+.view_balance_button {
+    padding: 15px 15px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 20px;
+    background-color: #FF6F61; /*#4CAF50;  Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.view_balance_button:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid #4CAF50;
+    font-weight: bold;
+    font-family: Arial;
+}
+
+.dashboard_block{
+	position: absolute;
+    left: 62%;
+    top: 55%;
+    height: 72%;
+    transform: translate(-50%, -50%);
+    background: rgba(211, 211, 211, 0.4);
+    padding: 20px;
+    text-align: center;
+    border-radius: 20px;
+    width: 1050px;
+}
+
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.option {
+    text-align: center;
+}
+
+.dashboard-button {
+    width: 130px;
+    height: 130px;
+    border: 2px solid black; /* Green border */
+    border-radius: 15px;
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.8); /* Slight shadow for depth */
+}
+
+.dashboard-button:hover {
+    transform: scale(1.1);
+    box-shadow: 5px 12px 25px rgba(0, 0, 0, 0.8); /* Enhanced shadow for hover state */
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Arial;
+}
+
+.chatbot-icon {
+    position: absolute;  /* Absolute positioning */
+    bottom: 30px;        /* Position from the bottom */
+    right: 10px;         /* Position from the right */
+    width: 400px;         /* Width of the chatbot icon. Adjust as needed. */
+    height: 350px;        /* Height of the chatbot icon. Adjust as needed. */
+    border: none;        /* No border for the iframe */
+    border-radius: 50%;  /* Optional: Makes the iframe look like a circle */
+    overflow: hidden;    /* Ensures content doesn't spill out of circular icon */
+}

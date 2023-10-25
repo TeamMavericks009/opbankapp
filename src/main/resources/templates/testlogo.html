@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+<link rel="stylesheet" type="text/css" href="login-page.css">
+<link rel="stylesheet" type="text/css" href="testcss.css">
+<!-- <link rel="stylesheet" type="text/css" href="testborder.css"> -->
+<script defer src="login-page.js"></script>
+</head>
+<body>
+	<div class="fixed-header">
+		<div class="container">
+
+			<nav>
+				<a href="">Home</a> <a href="">Artwork</a>
+				<div id="logo"> <img class="logo" alt="" src="bank_logo.png"> </div>
+				<a href="">Responses</a> <a href="">Contact</a>
+			</nav>
+		</div>
+	</div>
+	<main id="main-holder">
+		<h1 id="login-header">Login</h1>
+
+		<div id="login-error-msg-holder">
+			<p id="login-error-msg">
+				Invalid username <span id="error-msg-second-line">and/or
+					password</span>
+			</p>
+		</div>
+
+		<form id="login-form">
+			<input type="text" name="username" id="username-field"
+				class="login-form-field" placeholder="Username"> <input
+				type="password" name="password" id="password-field"
+				class="login-form-field" placeholder="Password"> <input
+				type="submit" value="Login" id="login-form-submit">
+		</form>
+
+	</main>
+
+	<div class="fixed-footer">
+		<div class="container">Copyright &copy; 2016 Your Company</div>
+	</div>
+</body>
+</html>
