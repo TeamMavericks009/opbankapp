@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.opbank.app.model.User;
 
 @Controller
-public class BotController {
-	
+public class LoginController {
 	
 	@GetMapping("/")
     public String index() {

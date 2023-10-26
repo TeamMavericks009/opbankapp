@@ -11,5 +11,6 @@ public class OpbankApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(OpbankApplication.class, args);
+		
 	}
 }
