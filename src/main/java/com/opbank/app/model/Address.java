@@ -1,5 +1,6 @@
 package com.opbank.app.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -24,7 +25,7 @@ public class Address {
 	private long id;
 
 	@Column(name = "perm_addr_unit_level_no")
-	private int permAddrUnitLevelNo;
+	private BigDecimal permAddrUnitLevelNo;
 	
 	@Column(name = "perm_addr_street_no")
 	private int permAddrStreetNo;
@@ -48,7 +49,7 @@ public class Address {
 	private String permAddrCountry;
 	
 	@Column(name = "mail_addr_unit_level_no")
-	private int mailAddrUnitLevelNo;
+	private BigDecimal mailAddrUnitLevelNo;
 	
 	@Column(name = "mail_addr_street_no")
 	private int mailAddrStreetNo;
