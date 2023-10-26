@@ -1,5 +1,6 @@
 package com.opbank.app.model;
 
+import jakarta.persistence.Entity;
 
 public class User {
 	private String username;

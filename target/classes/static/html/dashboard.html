@@ -7,8 +7,11 @@
 <link href="dashboardStyles.css" rel="stylesheet">
 <link href="borderStyles.css" rel="stylesheet">
 <link href="chatbotStyles.css" rel="stylesheet">
+<link rel="stylesheet" href="try.css">
 <script defer src="dashboard.js"></script>
 <script defer src="chatbot.js"></script>
+<script src="try.js" defer></script>
+<script src="click.js" defer></script>
 <title>Dashboard</title>
 </head>
 <body>
@@ -86,7 +89,7 @@
 			</div>
 
 			<!-- Chatbot Interface -->
-			<div id="chatbot" class="chatbot-hidden">
+			<!-- <div id="chatbot" class="chatbot-hidden">
 				<div id="chatHeader">
 					<h3>Chatbot</h3>
 					<button id="minimizeBtn">Minimize</button>
@@ -96,12 +99,64 @@
 				<button onclick="sendMessage()">Send</button>
 
 			</div>
+ -->
+			<!-- <button class="chatbot-toggler">
+
+				<span class="material-symbols-rounded">
+					<p class="bot_info">Hi, I am Ava, click on me for help :)</p> <img
+					src="avatar2.png" alt="test" class="avatar">
+				</span> <span class="close_text">close</span>
+			</button>
+			<div class="chatbot">
+				<header>
+					<h2>Chatbot</h2>
+					<span class="close-btn material-symbols-outlined">close</span>
+				</header>
+				<ul class="chatbox">
+					<li class="chat incoming"><span
+						class="material-symbols-outlined">smart_toy</span>
+						<p>Hi there 👋<br>How can I help you today? 	</p></li>
+				</ul>
+				<div class="chat-input">
+					<textarea placeholder="Enter a message..." spellcheck="false"
+						required></textarea>
+					<span id="send-btn" class="material-symbols-rounded">send</span>
+				</div>
+			</div>
+ -->
+ 
+ <button class="chatbot-toggler">
+    <span class="material-symbols-rounded">
+        <p class="bot_info">Hi, I am Ava, click on me for help :)</p>
+        <img src="avatar2.png" alt="test" class="avatar">
+    </span>
+    <span class="close_text">close</span>
+</button>
+
+<div class="chatbot">
+    <header>
+        <h2>Chatbot</h2>
+        <!-- Close and minimize buttons -->
+        <div class="chatbot-controls">
+            <button class="minimize-btn">_</button>
+            <button class="close-btn">x</button>
+        </div>
+    </header>
+    <ul class="chatbox">
+        <li class="chat incoming">
+            <span class="material-symbols-outlined">smart_toy</span>
+            <p>Hi there 👋<br>How can I help you today?</p>
+        </li>
+    </ul>
+    <div class="chat-input">
+        <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+        <span id="send-btn" class="material-symbols-rounded">send</span>
+    </div>
+</div>
+ 
+ 
 		</div>
-
-
-
 	</div>
-
 
 	<div class="fixed-footer">
 		<div class="container">Copyright &copy; 2023 AustraliaOldPeople

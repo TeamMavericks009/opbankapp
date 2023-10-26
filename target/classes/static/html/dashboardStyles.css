@@ -129,3 +129,14 @@ label {
     font-weight: bold;
     font-family: Arial;
 }
+
+.chatbot-icon {
+    position: absolute;  /* Absolute positioning */
+    bottom: 30px;        /* Position from the bottom */
+    right: 10px;         /* Position from the right */
+    width: 400px;         /* Width of the chatbot icon. Adjust as needed. */
+    height: 350px;        /* Height of the chatbot icon. Adjust as needed. */
+    border: none;        /* No border for the iframe */
+    border-radius: 50%;  /* Optional: Makes the iframe look like a circle */
+    overflow: hidden;    /* Ensures content doesn't spill out of circular icon */
+}
