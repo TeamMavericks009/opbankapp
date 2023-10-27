@@ -16,6 +16,8 @@ public class LoginController {
         return "login"; // This will look for 'index.html' in the templates folder
     }
 	
+	
+	
 	@PostMapping("/dashboard")
 	public String userLogin(@ModelAttribute User user, Model model) {
 		System.out.println("test");
