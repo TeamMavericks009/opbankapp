@@ -7,6 +7,42 @@ grant all privileges on database opbank to dbo;
 grant all on schema dbo to dbo;
 create extension pgcrypto; */
 
+/* Initial table drop */
+drop table if exists dbo.transaction;
+drop table if exists dbo.transaction_type;
+drop table if exists dbo.transaction_category;
+drop table if exists dbo.user_preferences;
+drop table if exists dbo.error_log;
+drop table if exists dbo.bot_response_history;
+drop table if exists dbo.sessions;
+drop table if exists dbo.user_feedback;
+drop table if exists dbo.bank;
+drop table if exists dbo.user_registration;
+drop table if exists dbo.user_login_history;
+drop table if exists dbo.user_login;
+drop table if exists dbo.cards;
+drop table if exists dbo.linked_payee;
+drop table if exists dbo.bank_account;
+drop table if exists dbo.users;
+drop table if exists dbo.address;
+
+drop sequence if exists dbo.address_seq;
+drop sequence if exists dbo.users_seq;
+drop sequence if exists dbo.bank_account_seq;
+drop sequence if exists dbo.linked_payee_seq;
+drop sequence if exists dbo.cards_seq;
+drop sequence if exists dbo.user_login_seq;
+drop sequence if exists dbo.user_login_history_seq;
+drop sequence if exists dbo.user_registration_seq;
+drop sequence if exists dbo.bank_seq;
+drop sequence if exists dbo.user_feedback_seq;
+drop sequence if exists dbo.sessions_seq;
+drop sequence if exists dbo.bot_response_history_seq;
+drop sequence if exists dbo.error_log_seq;
+drop sequence if exists dbo.user_preferences_seq;
+drop sequence if exists dbo.transaction_category_seq;
+drop sequence if exists dbo.transaction_type_seq;
+drop sequence if exists dbo.transaction_seq;
 
 /** 
  * Address table
@@ -179,9 +215,9 @@ create sequence if not exists dbo.user_login_seq as bigint
  * User_Login_History **/
 create table if not exists dbo.user_login_history (user_login_history_id bigint,
                                                    user_login_id         bigint,
-                                                   user_id               varchar(50),
+                                                   login_id              varchar(50),
                                                    encrypted_password    text,
-                                                   encryption            varchar(30),
+                                                   --encryption            varchar(30), column removed
                                                    pswd_last_modified_on timestamp,
                                                    ip_address            inet,
                                                    user_name             varchar(30),
@@ -420,3 +456,18 @@ create sequence if not exists dbo.transaction_seq as bigint
                      minvalue 1 
                    start with 1 
                      owned by dbo.transaction.transaction_id; 
+					 
+do $$
+begin
+   if exists (select 1 
+                from pg_catalog.pg_constraint 
+               where conname = 'transaction_transaction_no_ak'
+                 and connamespace::regnamespace::text = 'dbo'
+                 and conrelid::regclass::text = 'transaction')
+   then 
+      raise info 'Dropping AK on dbo.transaction.transaction_no and creating AK on dbo.transaction.transaction_no,user_id ';
+      alter table dbo."transaction" drop constraint if exists transaction_transaction_no_ak;
+      alter table dbo."transaction" add constraint transaction_transaction_no_user_id_ak unique (transaction_no,user_id);
+   end if;
+end $$ language plpgsql;
+					 
