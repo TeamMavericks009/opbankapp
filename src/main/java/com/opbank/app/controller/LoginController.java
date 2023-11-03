@@ -2,27 +2,29 @@ package com.opbank.app.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.opbank.app.model.User;
+import com.opbank.app.entity.UserLogin;
 
 @Controller
 public class LoginController {
 	
-	@GetMapping("/")
-    public String index() {
-        return "login"; // This will look for 'index.html' in the templates folder
-    }
-	
-	
-	
-	@PostMapping("/dashboard")
-	public String userLogin(@ModelAttribute User user, Model model) {
-		System.out.println("test");
-		model.addAttribute("Firstname", user.getUsername());
-		model.addAttribute("Password", user.getPasswd());
-		return "dashboard"; // Redirect to dashboard.html after processing the POST request
+	@RequestMapping(value = "/", method = RequestMethod.GET) 
+	public String displayLogin(Model model) { 
+		System.out.println("inside login get method");
+	    model.addAttribute("user", new UserLogin());
+	    System.out.println(model.getAttribute("user"));
+	    return "login"; 
 	}
+	
+	@RequestMapping(value = "/dashboard", method = RequestMethod.POST) 
+	public String Login(Model model, @ModelAttribute UserLogin user) { 
+		System.out.println("inside login post method");
+	    model.addAttribute("user", new UserLogin());
+	    System.out.println(user.getUserName());
+	    System.out.println(user.getEncryptedPassword());
+	    return "dashboard"; 
+	} 
 }

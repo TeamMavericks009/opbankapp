@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // If validation passed, optionally send the form data to server here
         if (isValid) {
             localStorage.setItem('user', JSON.stringify({ username }));
-        	window.location.href = "dashboard.html"; // Redirect to dashboard page or any success page.
+        	document.querySelector(".login-form").submit(); 
         }
     });
 

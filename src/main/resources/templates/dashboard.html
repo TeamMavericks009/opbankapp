@@ -4,8 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link th:href="@{static/dashboardStyles.css}" rel="stylesheet">
 <link th:href="@{static/chatbotStyles.css}" rel="stylesheet">
+<link rel="stylesheet" th:href="@{static/dashboardStyles.css}">
+<link rel="stylesheet" th:href="@{static/borderStyles.css}">
 <link rel="stylesheet" th:href="@{static/try.css}">
 <script defer th:src="@{static/dashboard.js}"></script>
 <script defer th:src="@{static/chatbot.js}"></script>
@@ -32,7 +33,7 @@
 		<div class="bg">
 			<img th:src="@{static/old_man.png}" alt="Profile Image">
 		</div>
-		<h2 class="profile_header">Profile Name</h2>
+		<h2 class="profile_header" th:text="${param.userName}">Profile name</h2>
 
 		<h3>Account Summary</h3>
 		<table class="account_summary">
@@ -64,27 +65,27 @@
 		<div class="dashboard">
 			<div class="option">
 				<button onclick="navigate('accounts')" class="dashboard-button"
-					th:style="background-image: url('+ @{static/accounts.png} +');"></button>
+					th:style="'background-image: url('+ @{static/accounts.png} +');'"></button>
 				<label>Accounts</label>
 			</div>
 			<div class="option">
 				<button onclick="navigate('transactions')" class="dashboard-button"
-					th:style="background-image: url('+ @{static/transactions.png} +');"></button>
+					th:style="'background-image: url('+ @{static/transactions.png} +');'"></button>
 				<label>Transactions</label>
 			</div>
 			<div class="option">
 				<button onclick="navigate('statements')" class="dashboard-button"
-					th:style="background-image: url('+ @{static/statements.jpg} + ');"></button>
+					th:style="'background-image: url('+ @{static/statements.jpg} + ');'"></button>
 				<label>Statements</label>
 			</div>
 			<div class="option">
 				<button onclick="navigate('cards')" class="dashboard-button"
-					th:style="background-image: url('+ @{static/cards.jpg} +');"></button>
+					th:style="'background-image: url('+ @{static/cards.jpg} +');'"></button>
 				<label>Bank Cards</label>
 			</div>
 			<div class="option">
 				<button onclick="navigate('help')" class="dashboard-button"
-					th:style="background-image: url('+ @{static/help.jpg} +');"></button>
+					th:style="'background-image: url('+ @{static/help.jpg} +');'"></button>
 				<label>Help</label>
 			</div>
 

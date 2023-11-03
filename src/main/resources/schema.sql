@@ -1,3 +1,20 @@
+/*
+ * Author      : Sarika Kondakindi
+ * JIRA        : ELDHLP-67
+ * Created Date: 2023-11-02
+ * Description : Dropped the columns last_login_date, last_logout_date from dbo.user_login_history.
+ */
+
+/*
+ * Modification History
+ * 
+ *  Date -------  JIRA  ---- Author ----------- Comments
+ *  2023-11-02    ELDHLP-67  Sarika Kondakindi  Rename table dbo."transaction" to transactions since it is a reserved keyword.
+ *  2023-11-02    ELDHLP-67  Sarika Kondakindi  Dropped the columns last_login_date, last_logout_date from dbo.user_login_history.
+ * 
+ */
+
+
 /* create database opbank;
 --login to database opbank i.e., connect to opbank database as postgres user or super user before proceeding
 
@@ -7,6 +24,44 @@ grant all privileges on database opbank to dbo;
 grant all on schema dbo to dbo;
 create extension pgcrypto; */
 
+/* Initial table drop */
+drop table if exists dbo."transaction";
+drop table if exists dbo.transactions;
+drop table if exists dbo.transaction_type;
+drop table if exists dbo.transaction_category;
+drop table if exists dbo.user_preferences;
+drop table if exists dbo.error_log;
+drop table if exists dbo.bot_response_history;
+drop table if exists dbo.sessions;
+drop table if exists dbo.user_feedback;
+drop table if exists dbo.bank;
+drop table if exists dbo.user_registration;
+drop table if exists dbo.user_login_history;
+drop table if exists dbo.user_login;
+drop table if exists dbo.cards;
+drop table if exists dbo.linked_payee;
+drop table if exists dbo.bank_account;
+drop table if exists dbo.users;
+drop table if exists dbo.address;
+
+drop sequence if exists dbo.address_seq;
+drop sequence if exists dbo.users_seq;
+drop sequence if exists dbo.bank_account_seq;
+drop sequence if exists dbo.linked_payee_seq;
+drop sequence if exists dbo.cards_seq;
+drop sequence if exists dbo.user_login_seq;
+drop sequence if exists dbo.user_login_history_seq;
+drop sequence if exists dbo.user_registration_seq;
+drop sequence if exists dbo.bank_seq;
+drop sequence if exists dbo.user_feedback_seq;
+drop sequence if exists dbo.sessions_seq;
+drop sequence if exists dbo.bot_response_history_seq;
+drop sequence if exists dbo.error_log_seq;
+drop sequence if exists dbo.user_preferences_seq;
+drop sequence if exists dbo.transaction_category_seq;
+drop sequence if exists dbo.transaction_type_seq;
+drop sequence if exists dbo.transaction_seq;
+drop sequence if exists dbo.transactions_seq;
 
 /** 
  * Address table
@@ -179,19 +234,21 @@ create sequence if not exists dbo.user_login_seq as bigint
  * User_Login_History **/
 create table if not exists dbo.user_login_history (user_login_history_id bigint,
                                                    user_login_id         bigint,
-                                                   user_id               varchar(50),
+                                                   login_id              varchar(50),
                                                    encrypted_password    text,
-                                                   encryption            varchar(30),
+                                                   --encryption            varchar(30), column removed
                                                    pswd_last_modified_on timestamp,
                                                    ip_address            inet,
                                                    user_name             varchar(30),
-                                                   last_login_date       timestamp,
-                                                   last_logout_date      timestamp,
+                                                   --last_login_date       timestamp, dropped the columns
+                                                   --last_logout_date      timestamp,
                                                    record_status         char(1) default 'I',
                                                    inserted_by           varchar(50) default current_user,
                                                    inserted_date         timestamptz default now(),
                                                    constraint user_login_history_pk primary key(user_login_history_id)
                                                    );
+alter table dbo.user_login_history drop column if exists last_login_date;
+alter table dbo.user_login_history drop column if exists last_logout_date;												   
 
 create sequence if not exists dbo.user_login_history_seq as bigint 
                  increment by 1 
@@ -366,7 +423,7 @@ create sequence if not exists dbo.transaction_category_seq as bigint
                  increment by 1 
                      minvalue 1 
                    start with 1 
-                     owned by dbo.user_feedback.user_feedback_id;
+                     owned by dbo.transaction_category.transaction_category_id;
                      
                      
 /* TRansaction_type
@@ -387,36 +444,52 @@ create sequence if not exists dbo.transaction_type_seq as bigint
                      owned by dbo.transaction_type.transaction_type_id;
                      
                      
-/*  Transaction
+/*  Transactions
  * 
  */
- create table if not exists dbo.transaction(transaction_id          bigint,
-                                           transaction_no          bigint not null,
-                                           bank_account_id         bigint not null,
-                                           transaction_category_id int not null,
-                                           transaction_type_id     int not null,
-                                           transaction_amount      numeric(10,4) not null default 0,
-                                           participant_account_id  bigint,-- (fk payee id)
-                                           balance                 numeric(10,4) not null,
-                                           status                  varchar(30) not null,
-										   user_id                 bigint not null,
-										   transaction_date        timestamp not null,
-										   description             varchar(50),
-										   inserted_by             varchar(50) default current_user,
-                                           inserted_date           timestamptz default now(),
-                                           updated_by              varchar(50),
-                                           updated_date            timestamptz,
-                                           constraint transaction_pk primary key(transaction_id),
-                                           constraint transaction_transaction_no_ak unique(transaction_no),
-                                           constraint transaction_bank_account_id_fk foreign key(bank_account_id) references dbo.bank_account(bank_account_id),
-                                           constraint transaction_transaction_category_id_fk foreign key(transaction_category_id) references dbo.transaction_category(transaction_category_id),
-                                           constraint transaction_transaction_type_id_fk foreign key(transaction_type_id) references dbo.transaction_type(transaction_type_id),
-                                           constraint transaction_participant_account_id_fk foreign key(participant_account_id) references dbo.linked_payee(linked_payee_id),
-                                           constraint transaction_user_id_fk foreign key(user_id) references dbo.users(user_id)
+ create table if not exists dbo.transactions(transaction_id          bigint,
+                                             transaction_no          bigint not null,
+                                             bank_account_id         bigint not null,
+                                             transaction_category_id int not null,
+                                             transaction_type_id     int not null,
+                                             transaction_amount      numeric(10,4) not null default 0,
+                                             participant_account_id  bigint,-- (fk payee id)
+                                             balance                 numeric(10,4) not null,
+                                             status                  varchar(30) not null,
+										     user_id                 bigint not null,
+										     transaction_date        timestamp not null,
+										     description             varchar(50),
+										     inserted_by             varchar(50) default current_user,
+                                             inserted_date           timestamptz default now(),
+                                             updated_by              varchar(50),
+                                             updated_date            timestamptz,
+                                             constraint transactions_pk primary key(transaction_id),
+                                             constraint transactions_transaction_no_ak unique(transaction_no,user_id),
+                                             constraint transactions_bank_account_id_fk foreign key(bank_account_id) references dbo.bank_account(bank_account_id),
+                                             constraint transactions_transaction_category_id_fk foreign key(transaction_category_id) references dbo.transaction_category(transaction_category_id),
+                                             constraint transactions_transaction_type_id_fk foreign key(transaction_type_id) references dbo.transaction_type(transaction_type_id),
+                                             constraint transactions_participant_account_id_fk foreign key(participant_account_id) references dbo.linked_payee(linked_payee_id),
+                                             constraint transactions_user_id_fk foreign key(user_id) references dbo.users(user_id)
                                            );
 
-create sequence if not exists dbo.transaction_seq as bigint 
+create sequence if not exists dbo.transactions_seq as bigint 
                  increment by 1 
                      minvalue 1 
                    start with 1 
-                     owned by dbo.transaction.transaction_id; 
+                     owned by dbo.transactions.transaction_id; 
+					 
+/**do $$
+begin
+   if exists (select 1 
+                from pg_catalog.pg_constraint 
+               where conname = 'transactions_transaction_no_ak'
+                 and connamespace::regnamespace::text = 'dbo'
+                 and conrelid::regclass::text = 'transactions')
+   then 
+      raise info 'Dropping AK on dbo.transactions.transaction_no and creating AK on dbo.transactions.transaction_no,user_id ';
+      alter table dbo.transactions drop constraint if exists transactions_transaction_no_ak;
+      alter table dbo.transactions add constraint transactions_transaction_no_user_id_ak unique (transaction_no,user_id);
+   end if; 
+end $$ language plpgsql; **/
+
+					 

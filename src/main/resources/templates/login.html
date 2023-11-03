@@ -4,9 +4,12 @@
 <meta charset="ISO-8859-1">
 <title>Login</title>
 <link rel="stylesheet" th:href="@{static/borderStyles.css}" />
-    <link rel="stylesheet" th:href="@{static/loginPage.css}" />
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script defer th:src="@{static/login-page.js}"></script>
+<link rel="stylesheet" th:href="@{static/loginPage.css}" />
+<script defer th:src="@{static/login-page.js}"></script>
+<link
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<!--  <script defer th:src="@{static/login-page.js}"></script> -->
 </head>
 <body>
 	<div class="fixed-header">
@@ -22,14 +25,17 @@
 
 
 	<div class="wrapper">
-		<form action="dashboard" method="post" class="login-form" >
+		<form action="#" th:action="@{/dashboard}" method="POST"
+			class="login-form" th:object="${user}">
 			<h2>Login into your account</h2>
 
 			<div class="input-container">
 				<p class="namings">Username</p>
 				<div class="input-icon-container">
-					<i class="fa fa-user icon"></i> <input id="username" name="username"
-						class="input-field" type="text" placeholder="Enter your username">
+					<i class="fa fa-user icon"></i> <input id="username"
+						name="Username" class="input-field" type="text"
+						th:field="*{userName}" placeholder="Enter your username">
+
 				</div>
 				<span class="error-message" id="usernameError"></span>
 			</div>
@@ -39,16 +45,20 @@
 				<div class="input-icon-container">
 					<i class="fa fa-key icon"></i> <input id="password" name="passwd"
 						class="input-field" type="password"
-						placeholder="Enter your password">
+						th:field="*{encryptedPassword}" placeholder="Enter your password">
+
+
 				</div>
 				<span class="error-message" id="passwordError"></span>
 			</div>
 
 			<button type="submit" class="btn">Submit</button>
+
+			<!-- <button class="btn" name="Submit" value="Submit" type="Submit" th:text="Login">Submit</button> -->
+
 			<h2>Did you forget your username or password??</h2>
 			<button type="forgotbtn" class="btn">Click Here</button>
 		</form>
-
 
 		<div class="thin-line"></div>
 		<div class="text-and-button">
@@ -58,7 +68,8 @@
 	</div>
 
 	<div class="fixed-footer">
-		<div class="container">Copyright &copy; 2023 AustraliaOldPeopleBank</div>
+		<div class="container">Copyright &copy; 2023
+			AustraliaOldPeopleBank</div>
 	</div>
 </body>
 </html>
