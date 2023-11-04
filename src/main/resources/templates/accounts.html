@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AOP Bank - Accounts</title>
+<link
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" th:href="@{accountStyles.css}">
+<link rel="stylesheet" href="accountStyles.css">
+<link rel="stylesheet" href="borderStyles.css">
+<link rel="stylesheet" th:href="@{static/borderStyles.css}">
+
+</head>
+<body>
+	<div class="fixed-header">
+		<div class="container">
+			<div class="logo-container">
+				<img th:src="@{static/bank_logo.png}" alt="Logo" class="logo">
+			</div>
+			<nav>
+				<a href="#">About Us</a> <a href="#">Contact Us</a> <a href="#">Log
+					out</a>
+			</nav>
+		</div>
+	</div>
+
+	<div class="wrapper">
+		<div class="sidebar">
+			<h2>Menu</h2>
+			<ul>
+				<li><a href="#"><i class="fa fa-home"></i> &nbsp; Home</a></li>
+				<li><a href="#"><i class="fa fa-money""></i> &nbsp; Fund
+						Transfer</a></li>
+				<li><a href="#"><i class="fa fa-file-text-o"></i> &nbsp;
+						Statements</a></li>
+				<li><a href="#"><i class="fa fa-credit-card"></i> &nbsp;
+						Bank cards</a></li>
+				<li><a href="#"><i class="fa fa-cog"></i> &nbsp; Settings</a></li>
+			</ul>
+		</div>
+
+		<div class="main_content">
+			<div class="accounts_header">Your bank accounts list</div>
+			<div class="info">
+
+				<section class="account">
+					<h2>Savings account</h2>
+					<p>
+						Account number: <span th:text="${savingsAccountNumber}">21XXXXX</span>
+					</p>
+					<p>
+						BSB number: <span th:text="${savingsBSBNumber}">636-636</span>
+					</p>
+					<button>View More</button>
+				</section>
+
+				<section th:if="${hasCurrentAccount}" class="account">
+					<h2>Goal Saver account</h2>
+					<p>No goal saver account linked to your account.</p>
+				</section>
+
+
+				<section th:if="${hasCurrentAccount}" class="account">
+					<h2>Current account</h2>
+					<p>No current account linked to your account.</p>
+				</section>
+
+			</div>
+		</div>
+	</div>
+	<div class="fixed-footer">
+		<div class="container">Copyright &copy; 2023 AustraliaOldPeople
+			Bank</div>
+	</div>
+</body>
+</html>

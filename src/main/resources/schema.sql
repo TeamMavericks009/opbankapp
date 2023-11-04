@@ -100,6 +100,7 @@ create sequence if not exists dbo.address_seq as bigint
  * Users table
  * **/
 create table if not exists dbo.users(user_id       bigint,
+                                     user_name     varchar(25),
                                      first_name    varchar(50) not null,
                                      last_name     varchar(50) not null,
                                      middle_name   varchar(50),
@@ -114,6 +115,7 @@ create table if not exists dbo.users(user_id       bigint,
                                      updated_by    varchar(50),
                                      updated_date  timestamptz,
                                      constraint users_pk primary key(user_id),
+                                     constraint users_ak unique(user_name),
                                      constraint users_address_id_fk foreign key (address_id) references dbo.address(address_id),
                                      constraint users_gender_ck check (gender in ('Male', 'Female', 'Other/Non-Binary', 'Prefer not to say')) ,
                                      constraint users_email_ck check ((email is null and phone_number is not null) or (email is not null and phone_number is null) or (email is not null and phone_number is not null))
@@ -210,18 +212,21 @@ create sequence if not exists dbo.cards_seq as bigint
  * User_Login Table **/
                      
 create table if not exists dbo.user_login(user_login_id         bigint,
-										  login_id              varchar(50) not null,
+										  --login_id              varchar(50) not null,
+                                          user_name             varchar(25),
     									  encrypted_password    text not null,
     									  pswd_last_modified_on timestamp,
     									  ip_address            inet not null,
-    									  user_name             varchar(30) not null,
+    									  --user_name             varchar(30) not null,
     									  inserted_by           varchar(50) default current_user,
     									  inserted_date         timestamptz default now(),
     									  updated_by            varchar(50),
     									  updated_date          timestamptz,
     									  constraint user_login_pk primary key(user_login_id),
-    									  constraint user_login_login_id_ak unique(login_id),
-    									  constraint user_login_user_login_id_fk foreign key(user_login_id) references dbo.users(user_id)
+    									 -- constraint user_login_login_id_ak unique(login_id),
+    									  constraint user_login_user_name_ak unique(user_name),
+    									  constraint user_login_user_login_id_fk foreign key(user_login_id) references dbo.users(user_id),
+    									  constraint user_login_user_user_name_fk foreign key(user_name) references dbo.users(user_name)
 									      );
 create sequence if not exists dbo.user_login_seq as bigint 
                  increment by 1 
@@ -234,12 +239,13 @@ create sequence if not exists dbo.user_login_seq as bigint
  * User_Login_History **/
 create table if not exists dbo.user_login_history (user_login_history_id bigint,
                                                    user_login_id         bigint,
-                                                   login_id              varchar(50),
+                                                   user_name             varchar(25),
+                                                   --login_id              varchar(50),
                                                    encrypted_password    text,
                                                    --encryption            varchar(30), column removed
                                                    pswd_last_modified_on timestamp,
                                                    ip_address            inet,
-                                                   user_name             varchar(30),
+                                                   --user_name             varchar(30),
                                                    --last_login_date       timestamp, dropped the columns
                                                    --last_logout_date      timestamp,
                                                    record_status         char(1) default 'I',
@@ -260,8 +266,8 @@ create sequence if not exists dbo.user_login_history_seq as bigint
 /** 
  * User_registration Table**/                     
 create table if not exists dbo.user_registration(user_registration_id bigint,
-                                                 user_id              bigint not null,
-                                                 temp_request_id      numeric(10) not null,
+                                                 user_name            varchar(25) not null,--user_id removed
+                                                -- temp_request_id      numeric(10) not null,
                                                  account_reset_flag   boolean default false,
                                                  bank_account_id      bigint not null,
                                                  temp_password        text not null,
@@ -270,8 +276,9 @@ create table if not exists dbo.user_registration(user_registration_id bigint,
                                                  inserted_date        timestamptz default now(),
                                                  updated_by           varchar(50),
                                                  updated_date         timestamptz,
-                                                 constraint user_registration_pk primary key(user_registration_id),
-                                                 constraint user_registration_user_id_fk foreign key(user_id) references dbo.users(user_id),
+                                               --  constraint user_registration_pk primary key(user_registration_id),
+                                                 --constraint user_registration_user_id_fk foreign key(user_id) references dbo.users(user_id),
+                                                 constraint user_registration_user_name_fk foreign key(user_name) references dbo.users(user_name),
                                                  constraint user_registration_bank_account_id_fk foreign key(bank_account_id) references dbo.bank_account(bank_account_id)
                                                  );
                                                  

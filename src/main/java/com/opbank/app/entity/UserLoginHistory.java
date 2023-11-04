@@ -29,8 +29,8 @@ public class UserLoginHistory {
 	@Column(name = "user_login_id")
 	private long userLoginId;
 	
-	@Column(name = "user_id")
-	private String userId;
+	@Column(name = "user_name")
+	private String userName;
 	
 	@Column(name = "encrypted_password")
 	private String encryptedPassword;
@@ -43,9 +43,6 @@ public class UserLoginHistory {
 	
 	@Column(name = "ip_address")
 	private InetAddress ipAddress;	
-	
-	@Column(name = "user_name")
-	private String userName;
 	
 	@Column(name = "inserted_by")
 	private String insertedBy;

@@ -13,12 +13,12 @@
        insert into dbo.address(address_id, perm_addr_unit_level_no, perm_addr_street_no, perm_addr_street_name, perm_addr_street_type, perm_addr_suburb, perm_addr_state, perm_addr_zip, perm_addr_country, mail_addr_unit_level_no, mail_addr_street_no, mail_addr_street_name, mail_addr_street_type, mail_addr_suburb, mail_addr_state, mail_addr_zip, mail_addr_country)
                         values(nextval('dbo.address_seq'), 518, 5, 'Crown Street', 'Precinct', 'Cronulla', '2910', '2013', 'Australia', 301, 15,  'Transit Street', 'Boulevard', 'Epping', 'NSW', '2910', 'Australia');
             
-       insert into dbo.users(user_id, first_name, last_name, middle_name, person_title, date_of_birth, gender, email, phone_number, address_id)
-			          values(nextval('dbo.users_seq'), 'Bella', 'Swan', 'Marie', 'Ms.', '1996-10-15', 'Female', 'bella.swan@gmail.com', '123456789', 1),
-			                (nextval('dbo.users_seq'), 'Will', 'Smith', NULL, 'Mr.', '1981-03-18', 'Male', null, '987654321', 2),
-			                (nextval('dbo.users_seq'), 'Ziva', 'David', 'Pablo', 'Ms.', '1991-04-29', 'Female', 'ziva.david@gmail.com', '911654321', 3),
-			                (nextval('dbo.users_seq'), 'Gibbs', 'Leroy', 'Jethro', 'Mr.', '1992-06-03', 'Male', 'gibbs.jethro@gmail.com', '987114321', 4),
-			                (nextval('dbo.users_seq'), 'Abby', 'Scuito', 'David', 'Ms.', '1989-09-21', 'Female', null, '987654111', 5);
+       insert into dbo.users(user_id, user_name, first_name, last_name, middle_name, person_title, date_of_birth, gender, email, phone_number, address_id)
+			          values(nextval('dbo.users_seq'), 'Bella3','Bella', 'Swan', 'Marie', 'Ms.', '1996-10-15', 'Female', 'bella.swan@gmail.com', '123456789', 1),
+			                (nextval('dbo.users_seq'), 'Smith9', 'Will', 'Smith', NULL, 'Mr.', '1981-03-18', 'Male', null, '987654321', 2),
+			                (nextval('dbo.users_seq'), 'Ziva', 'Ziva', 'David', 'Pablo', 'Ms.', '1991-04-29', 'Female', 'ziva.david@gmail.com', '911654321', 3),
+			                (nextval('dbo.users_seq'), 'Gibbs005', 'Gibbs', 'Leroy', 'Jethro', 'Mr.', '1992-06-03', 'Male', 'gibbs.jethro@gmail.com', '987114321', 4),
+			                (nextval('dbo.users_seq'), 'Abby11', 'Abby', 'Scuito', 'David', 'Ms.', '1989-09-21', 'Female', null, '987654111', 5);
 
 
        insert into dbo.bank_account(bank_account_id, bsb, security_pin, account_no, account_type, user_id, currency_type, balance, interest_rate, minimum_balance, is_joint_account, tfn, status, last_active_on)
@@ -49,17 +49,17 @@
                             (nextval('dbo.cards_seq'), '2345019012341234', 5, '2027-12-01', '800', 'Abby Scuito', 'Debit');
   
        insert into dbo.user_login 
-       select user_id as user_login_id, coalesce(email, phone_number) as user_id, 
-              crypt(first_name||right(phone_number,4), gen_salt('bf')), current_date-2,'182.189.12.53' , concat(first_name||' ', last_name) as user_name
+       select user_id as user_login_id,user_name,--, coalesce(email, phone_number) as user_id, 
+              crypt(first_name||right(phone_number,4), gen_salt('bf')), current_date-2,'182.189.12.53'-- , concat(first_name||' ', last_name) as user_name
          from dbo.users;
        
-       insert into dbo.user_login_history(user_login_history_id, user_login_id, login_id, encrypted_password, pswd_last_modified_on, ip_address, user_name/*, last_login_date, last_logout_date*/, record_status)
-       select nextval('dbo.user_login_history_seq'),user_login_id,login_id, encrypted_password, pswd_last_modified_on,ip_address , user_name/*, current_date-2, current_date-1*/,'I'
+       insert into dbo.user_login_history(user_login_history_id, user_login_id,user_name/*, login_id*/, encrypted_password, pswd_last_modified_on, ip_address/*, user_name*//*, last_login_date, last_logout_date*/, record_status)
+       select nextval('dbo.user_login_history_seq'),user_login_id,user_name/*,login_id*/, encrypted_password, pswd_last_modified_on,ip_address /*, user_name*/ /*, current_date-2, current_date-1*/,'I'
          from dbo.user_login;
 
    
-       insert into dbo.user_registration(user_registration_id, user_id, temp_request_id, account_reset_flag, bank_account_id, temp_password, "password")
-       select nextval('dbo.user_registration_seq'), 1, 1,false, 1, encrypted_password ,encrypted_password  
+       insert into dbo.user_registration(user_registration_id, user_name/*, temp_request_id*/, account_reset_flag, bank_account_id, temp_password, "password")
+       select nextval('dbo.user_registration_seq'), user_name/*, 1*/,false, 1, encrypted_password ,encrypted_password  
          from dbo.user_login ul ;
 
    

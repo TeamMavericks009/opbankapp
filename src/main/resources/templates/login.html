@@ -46,30 +46,28 @@
 					<i class="fa fa-key icon"></i> <input id="password" name="passwd"
 						class="input-field" type="password"
 						th:field="*{encryptedPassword}" placeholder="Enter your password">
-
-
-				</div>
+		</div>
 				<span class="error-message" id="passwordError"></span>
+				
 			</div>
 
 			<button type="submit" class="btn">Submit</button>
 
-			<!-- <button class="btn" name="Submit" value="Submit" type="Submit" th:text="Login">Submit</button> -->
-
 			<h2>Did you forget your username or password??</h2>
-			<button type="forgotbtn" class="btn">Click Here</button>
+			<button id="forgotPassword" onclick="navigateToForgotPassword(event)" class="btn" >Click Here</button>
 		</form>
 
 		<div class="thin-line"></div>
 		<div class="text-and-button">
 			<p class="newUsersPara">Are you a first-time user? Click below</p>
-			<button type="first-time-user" class="btn">New User</button>
+			<button onclick="navigateToRegistration()" class="newUser_btn">New Users</button>
 		</div>
 	</div>
-
+	
 	<div class="fixed-footer">
 		<div class="container">Copyright &copy; 2023
 			AustraliaOldPeopleBank</div>
 	</div>
+
 </body>
 </html>

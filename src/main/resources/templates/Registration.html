@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+<link rel="stylesheet" th:href="@{static/borderStyles.css}" />
+<link rel="stylesheet" th:href="@{static/registerStyles.css}" />
+<script defer th:src="@{static/login-page.js}"></script>
+<script defer th:src="@{static/register.js}"></script>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
+</head>
+<body>
+	<div class="fixed-header">
+		<div class="container">
+			<div class="logo-container">
+				<img th:src="@{static/bank_logo.png}" alt="Logo" class="logo">
+			</div>
+			<nav>
+				<a href="#">About Us</a> <a href="#">Contact Us</a>
+			</nav>
+		</div>
+	</div>
+<div>
+	<div class = 'container'>
+		<div class = 'row'>
+			<div class = "message">
+				<div th:if="${param.success}">
+					<div class = "alert alert-info">You've successfully registered</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<form action="#" th:action="@{/registration}" method="POST" class="login-form" th:object="${UserRegistration}">
+	
+		<h2>Register to online account</h2>
+
+		<div class="input-rego-container">
+			<p class="namings">Username</p>
+			<div class="input-icon-container">
+				<input id="username" name="Username" class="input-field" type="text"
+					th:field="*{userName}" placeholder="Enter your username">
+			</div>
+			<span class="error-message" id="usernameError"></span>
+		</div>
+
+		<div class="input-container">
+			<p class="namings">Temporary password</p>
+			<div class="input-icon-container">
+				<input id="password" name="temp passwd" class="input-field"
+					type="password" th:field="*{newPassword}"
+					placeholder="Enter your temporary password">
+			</div>
+			<span class="error-message" id="passwordError"></span>
+		</div>
+
+		<div class="input-container">
+			<p class="namings">New password</p>
+			<div class="input-icon-container">
+				<input id="password" name="new passwd" class="input-field"
+					type="password" th:field="*{oldPassword}"
+					placeholder="Enter your new password">
+			</div>
+			<span class="error-message" id="passwordError"></span>
+		</div>
+		
+		<div class="input-container">
+			<p class="namings">Re-enter new password</p>
+			<div class="input-icon-container">
+				<input id="password" name="new passwd" class="input-field"
+					type="password"	placeholder="Re-Enter your new password">
+			</div>
+			<span class="error-message" id="passwordError"></span>
+		</div>
+	<br>
+		<button type="submit" class="btn">Register</button>
+	</form>
+	
+	<div class="thin-line"></div>
+		<div class="text-and-button">
+		<span class="flash-msg" th:text="${message}"></span>
+		<div class="back-login">
+			<a href="login" class="btn_href">Go to Login</a>
+		</div>
+			<p class="newUsersPara">If you do not know or forget your temporary password, kindly reach out to our customer care. 
+				<br> 	Dial us on 1800 0081 or write an email support@aop.com</p>
+		</div>
+	
+	</div>
+
+	<div class="fixed-footer">
+		<div class="container">Copyright &copy; 2023
+			AustraliaOldPeopleBank</div>
+	</div>
+</body>
+</html>

@@ -25,8 +25,8 @@ public class UserLogin {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@Column(name = "login_id")
-	private String loginId;
+	@Column(name = "user_name")
+	private String userName;
 	
 	@Column(name = "encrypted_password")
 	private String encryptedPassword;
@@ -37,9 +37,6 @@ public class UserLogin {
 	@Column(name = "ip_address")
 	private InetAddress ipAddress;
 
-	@Column(name = "user_name")
-	private String userName;
-	
 	@Column(name = "inserted_by")
 	private String insertedBy;
 	
@@ -52,20 +49,22 @@ public class UserLogin {
 	@Column(name = "updated_date")
 	private LocalDateTime updatedDate;
 
+	public UserLogin() {
+		
+	}
+	
+	public UserLogin(String userName, String encryptedPassword) {
+		super();
+		this.userName = userName;
+		this.encryptedPassword = encryptedPassword;
+	}
+
 	public long getId() {
 		return id;
 	}
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public String getLoginId() {
-		return loginId;
-	}
-
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
 	}
 
 	public String getEncryptedPassword() {
@@ -131,6 +130,4 @@ public class UserLogin {
 	public void setUpdatedDate(LocalDateTime updatedDate) {
 		this.updatedDate = updatedDate;
 	}	
-	
-	
 }	

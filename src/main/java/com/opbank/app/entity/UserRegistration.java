@@ -1,6 +1,5 @@
 package com.opbank.app.entity;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -21,14 +20,12 @@ import lombok.NoArgsConstructor;
 public class UserRegistration {
 
 	@Id
+	@Column(name = "user_registration_id", updatable = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@Column(name = "user_id")
-	private long userId;
-	
-	@Column(name = "temp_request_id")
-	private BigDecimal tempRequestId;
+	@Column(name = "user_name")
+	private String userName;
 	
 	@Column(name = "account_reset_flag")
 	private boolean accountResetFlag;
@@ -52,6 +49,100 @@ public class UserRegistration {
 	private String updatedBy;
 	
 	@Column(name = "updated_date")
-	private LocalDateTime updatedDate;	
+	private LocalDateTime updatedDate;
 
+	
+	
+	public UserRegistration() {
+		super();
+	}
+
+	public UserRegistration(String userName, String tempPassword, String password) {
+		super();
+		this.userName = userName;
+		this.tempPassword = tempPassword;
+		this.password = password;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public boolean isAccountResetFlag() {
+		return accountResetFlag;
+	}
+
+	public void setAccountResetFlag(boolean accountResetFlag) {
+		this.accountResetFlag = accountResetFlag;
+	}
+
+	public long getBankAccountId() {
+		return bankAccountId;
+	}
+
+	public void setBankAccountId(long bankAccountId) {
+		this.bankAccountId = bankAccountId;
+	}
+
+	public String getTempPassword() {
+		return tempPassword;
+	}
+
+	public void setTempPassword(String tempPassword) {
+		this.tempPassword = tempPassword;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getInsertedBy() {
+		return insertedBy;
+	}
+
+	public void setInsertedBy(String insertedBy) {
+		this.insertedBy = insertedBy;
+	}
+
+	public LocalDateTime getInsertedDate() {
+		return insertedDate;
+	}
+
+	public void setInsertedDate(LocalDateTime insertedDate) {
+		this.insertedDate = insertedDate;
+	}
+
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	public LocalDateTime getUpdatedDate() {
+		return updatedDate;
+	}
+
+	public void setUpdatedDate(LocalDateTime updatedDate) {
+		this.updatedDate = updatedDate;
+	}
+	
+	
 }	
