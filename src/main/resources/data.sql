@@ -21,12 +21,12 @@
 			                (nextval('dbo.users_seq'), 'Abby11', 'Abby', 'Scuito', 'David', 'Ms.', '1989-09-21', 'Female', null, '987654111', 5);
 
 
-       insert into dbo.bank_account(bank_account_id, bsb, security_pin, account_no, account_type, user_id, currency_type, balance, interest_rate, minimum_balance, is_joint_account, tfn, status, last_active_on)
-                             values(nextval('dbo.bank_account_seq'), '123456', 'xxxx', '81923903', 'Current Account', 1, 'aud', 28391.50, 0.02, 300, false, '711838209', 'Active', current_date-1)
-                                  ,(nextval('dbo.bank_account_seq'), '456123', 'xxxx', '11923903', 'Current Account', 2, 'aud', 92308.50, 0.02, 300, false, null, 'Active',  current_date-2)
-                                  ,(nextval('dbo.bank_account_seq'), '321456', 'xxxx', '22923903', 'Savings Account', 3, 'aud', 12938.50, 0.03, 300, false, '911838209', 'Active', current_date-3)
-                                  ,(nextval('dbo.bank_account_seq'), '987345', 'xxxx', '31923903', 'Savings Account', 4, 'aud', 239187.50, 0.03, 300, false, '711839609', 'Active',  current_date-4)
-                                  ,(nextval('dbo.bank_account_seq'), '111267', 'xxxx', '41923903', 'Current Account', 5, 'aud', 103482.50, 0.02, 300, false, '711838211', 'Active', current_date-5);
+       insert into dbo.bank_account(bank_account_id, bsb/*, security_pin*/, account_no, account_type, user_id, currency_type, balance, interest_rate, minimum_balance, is_joint_account, tfn, status, last_active_on)
+                             values(nextval('dbo.bank_account_seq')/*, '123456'*/, 'xxxx', '81923903', 'Current Account', 1, 'aud', 28391.50, 0.02, 300, false, '711838209', 'Active', current_date-1)
+                                  ,(nextval('dbo.bank_account_seq')/*, '456123'*/, 'xxxx', '11923903', 'Current Account', 2, 'aud', 92308.50, 0.02, 300, false, null, 'Active',  current_date-2)
+                                  ,(nextval('dbo.bank_account_seq')/*, '321456'*/, 'xxxx', '22923903', 'Savings Account', 3, 'aud', 12938.50, 0.03, 300, false, '911838209', 'Active', current_date-3)
+                                  ,(nextval('dbo.bank_account_seq')/*, '987345'*/, 'xxxx', '31923903', 'Savings Account', 4, 'aud', 239187.50, 0.03, 300, false, '711839609', 'Active',  current_date-4)
+                                  ,(nextval('dbo.bank_account_seq')/*, '111267'*/, 'xxxx', '41923903', 'Current Account', 5, 'aud', 103482.50, 0.02, 300, false, '711838211', 'Active', current_date-5);
                
 
      
@@ -50,16 +50,18 @@
   
        insert into dbo.user_login 
        select user_id as user_login_id,user_name,--, coalesce(email, phone_number) as user_id, 
-              crypt(first_name||right(phone_number,4), gen_salt('bf')), current_date-2,'182.189.12.53'-- , concat(first_name||' ', last_name) as user_name
+              crypt(first_name||right(phone_number,4), gen_salt('bf')), current_date-2/*,'182.189.12.53' */,'1234' AS security_pin-- , concat(first_name||' ', last_name) as user_name
          from dbo.users;
+         
+         update user_login set encrypted_password = '1234' where user_name = 'Bella3';
        
-       insert into dbo.user_login_history(user_login_history_id, user_login_id,user_name/*, login_id*/, encrypted_password, pswd_last_modified_on, ip_address/*, user_name*//*, last_login_date, last_logout_date*/, record_status)
-       select nextval('dbo.user_login_history_seq'),user_login_id,user_name/*,login_id*/, encrypted_password, pswd_last_modified_on,ip_address /*, user_name*/ /*, current_date-2, current_date-1*/,'I'
+       insert into dbo.user_login_history(user_login_history_id, user_login_id,user_name/*, login_id*/, encrypted_password, pswd_last_modified_on /*, ip_address */, security_pin/*, user_name*//*, last_login_date, last_logout_date*/, record_status)
+       select nextval('dbo.user_login_history_seq'),user_login_id,user_name/*,login_id*/, encrypted_password, pswd_last_modified_on/*,ip_address */,security_pin/*, user_name*/ /*, current_date-2, current_date-1*/,'I'
          from dbo.user_login;
 
    
-       insert into dbo.user_registration(user_registration_id, user_name/*, temp_request_id*/, account_reset_flag, bank_account_id, temp_password, "password")
-       select nextval('dbo.user_registration_seq'), user_name/*, 1*/,false, 1, encrypted_password ,encrypted_password  
+       insert into dbo.user_registration(user_registration_id, user_name/*, temp_request_id*/, account_reset_flag, bank_account_id, temp_password, "password",security_pin)
+       select nextval('dbo.user_registration_seq'), user_name/*, 1*/,false, 1, encrypted_password ,encrypted_password  ,security_pin
          from dbo.user_login ul ;
 
    

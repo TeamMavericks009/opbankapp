@@ -5,6 +5,7 @@
 <title>Login</title>
 <link rel="stylesheet" th:href="@{static/borderStyles.css}" />
 <link rel="stylesheet" th:href="@{static/loginPage.css}" />
+<link rel="stylesheet" th:href="@{static/RegoStyles.css}" />
 <script defer th:src="@{static/login-page.js}"></script>
 <link
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -12,7 +13,7 @@
 <!--  <script defer th:src="@{static/login-page.js}"></script> -->
 </head>
 <body>
-<div class="fixed-header">
+	<div class="fixed-header">
 		<div class="container">
 			<div class="logo-container">
 				<img th:src="@{static/bank_logo.png}" alt="Logo" class="logo">
@@ -22,12 +23,41 @@
 			</nav>
 		</div>
 	</div>
-	
+ <div class = "wrapper-forgot">
+	<form action="#" th:action="@{/forgotPassword}" method="POST"
+		class="login-form" th:object="${UserRegistration}">
+
+		<h2>Registration Form</h2>
+			<div class="form-group">
+				 <label for="username">Username</label>
+				 <input id="username" name="Username" type="text" th:field="*{userName}" 
+				 placeholder="Enter your username" required>
+			</div>
+
+			<div class="form-group">
+				<label for="password">Security pin</label> <input type="password"
+					id="secure_pin" placeholder="secure_pin" th:field="*{securePin}"  required>
+			</div>
+
+			<div class="form-group">
+				<label for="password">New Password</label> <input type="password"
+					id="password" placeholder="Password" th:field="*{newPassword}" required>
+			</div>
+			<div class="form-group">
+				<label for="confirmPassword">Confirm Password</label> <input
+					type="password" id="confirmPassword" placeholder="Confirm Password"
+					required>
+			</div>
+
+			<div class="form-group">
+				<input type="submit" value="SUBMIT">
+			</div>
+	</form>
+	</div>
+
 	<div class="fixed-footer">
 		<div class="container">Copyright &copy; 2023
 			AustraliaOldPeopleBank</div>
 	</div>
-	
-	
 </body>
 </html>

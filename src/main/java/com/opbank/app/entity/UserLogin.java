@@ -1,7 +1,5 @@
 package com.opbank.app.entity;
 
-import java.net.InetAddress;
-import java.security.Timestamp;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -10,33 +8,34 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "user_login")
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class UserLogin {
 
 	@Id
+	@Column(name = "user_login_id", updatable = false, nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	@Column(name = "user_name")
 	private String userName;
 	
+	@Column(name = "security_pin")
+	private int securityPin;
+	
 	@Column(name = "encrypted_password")
 	private String encryptedPassword;
 	
 	@Column(name = "pswd_last_modified_on")
-	private Timestamp pswdLastModifiedOn;
+	private LocalDateTime pswdLastModifiedOn;
 	
-	@Column(name = "ip_address")
-	private InetAddress ipAddress;
-
+	/*
+	 * @Column(name = "ip_address") private InetAddress ipAddress;
+	 */
+	
 	@Column(name = "inserted_by")
 	private String insertedBy;
 	
@@ -50,11 +49,9 @@ public class UserLogin {
 	private LocalDateTime updatedDate;
 
 	public UserLogin() {
-		
 	}
 	
 	public UserLogin(String userName, String encryptedPassword) {
-		super();
 		this.userName = userName;
 		this.encryptedPassword = encryptedPassword;
 	}
@@ -66,6 +63,14 @@ public class UserLogin {
 	public void setId(long id) {
 		this.id = id;
 	}
+	
+	public int getSecurityPin() {
+		return securityPin;
+	}
+
+	public void setSecurityPin(int securityPin) {
+		this.securityPin = securityPin;
+	}
 
 	public String getEncryptedPassword() {
 		return encryptedPassword;
@@ -75,22 +80,12 @@ public class UserLogin {
 		this.encryptedPassword = encryptedPassword;
 	}
 
-	public Timestamp getPswdLastModifiedOn() {
-		return pswdLastModifiedOn;
-	}
-
-	public void setPswdLastModifiedOn(Timestamp pswdLastModifiedOn) {
-		this.pswdLastModifiedOn = pswdLastModifiedOn;
-	}
-
-	public InetAddress getIpAddress() {
-		return ipAddress;
-	}
-
-	public void setIpAddress(InetAddress ipAddress) {
-		this.ipAddress = ipAddress;
-	}
-
+	/*
+	 * public InetAddress getIpAddress() { return ipAddress; }
+	 * 
+	 * public void setIpAddress(InetAddress ipAddress) { this.ipAddress = ipAddress;
+	 * }
+	 */
 	public String getUserName() {
 		return userName;
 	}
@@ -107,14 +102,6 @@ public class UserLogin {
 		this.insertedBy = insertedBy;
 	}
 
-	public LocalDateTime getInsertedDate() {
-		return insertedDate;
-	}
-
-	public void setInsertedDate(LocalDateTime insertedDate) {
-		this.insertedDate = insertedDate;
-	}
-
 	public String getUpdatedBy() {
 		return updatedBy;
 	}
@@ -123,11 +110,5 @@ public class UserLogin {
 		this.updatedBy = updatedBy;
 	}
 
-	public LocalDateTime getUpdatedDate() {
-		return updatedDate;
-	}
 
-	public void setUpdatedDate(LocalDateTime updatedDate) {
-		this.updatedDate = updatedDate;
-	}	
 }	

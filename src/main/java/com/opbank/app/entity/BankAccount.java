@@ -21,14 +21,12 @@ import lombok.NoArgsConstructor;
 public class BankAccount {
 
 	@Id
+	@Column(name = "bank_account_id", updatable = false, nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	@Column(name = "bsb")
 	private String bsb;
-	
-	@Column(name = "security_pin")
-	private String securityPin;
 	
 	@Column(name = "account_no")
 	private String accountNo;
@@ -73,5 +71,144 @@ public class BankAccount {
 	private String updatedBy;
 	
 	@Column(name = "updated_date")
-	private LocalDateTime updatedDate;	
+	private LocalDateTime updatedDate;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getBsb() {
+		return bsb;
+	}
+
+	public void setBsb(String bsb) {
+		this.bsb = bsb;
+	}
+
+	public String getAccountNo() {
+		return accountNo;
+	}
+
+	public void setAccountNo(String accountNo) {
+		this.accountNo = accountNo;
+	}
+
+	public String getAccountType() {
+		return accountType;
+	}
+
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
+	}
+
+	public long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
+
+	public String getCurrencyType() {
+		return currencyType;
+	}
+
+	public void setCurrencyType(String currencyType) {
+		this.currencyType = currencyType;
+	}
+
+	public Float getBalance() {
+		return balance;
+	}
+
+	public void setBalance(Float balance) {
+		this.balance = balance;
+	}
+
+	public Float getInterestRate() {
+		return interestRate;
+	}
+
+	public void setInterestRate(Float interestRate) {
+		this.interestRate = interestRate;
+	}
+
+	public Float getMinimumBalance() {
+		return minimumBalance;
+	}
+
+	public void setMinimumBalance(Float minimumBalance) {
+		this.minimumBalance = minimumBalance;
+	}
+
+	public Boolean getIsJointAccount() {
+		return isJointAccount;
+	}
+
+	public void setIsJointAccount(Boolean isJointAccount) {
+		this.isJointAccount = isJointAccount;
+	}
+
+	public String getTfn() {
+		return tfn;
+	}
+
+	public void setTfn(String tfn) {
+		this.tfn = tfn;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public LocalDateTime getLastActiveOn() {
+		return lastActiveOn;
+	}
+
+	public void setLastActiveOn(LocalDateTime lastActiveOn) {
+		this.lastActiveOn = lastActiveOn;
+	}
+
+	public String getInsertedBy() {
+		return insertedBy;
+	}
+
+	public void setInsertedBy(String insertedBy) {
+		this.insertedBy = insertedBy;
+	}
+
+	public LocalDateTime getInsertedDate() {
+		return insertedDate;
+	}
+
+	public void setInsertedDate(LocalDateTime insertedDate) {
+		this.insertedDate = insertedDate;
+	}
+
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	public LocalDateTime getUpdatedDate() {
+		return updatedDate;
+	}
+
+	public void setUpdatedDate(LocalDateTime updatedDate) {
+		this.updatedDate = updatedDate;
+	}	
+	
+	
+	
 }	

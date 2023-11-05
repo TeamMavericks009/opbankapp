@@ -8,7 +8,7 @@
 }
 
 form {
-	left: 35%;
+	left: 25%;
 	top: 55%;
 	height: 55%;
 	position: absolute;
@@ -17,7 +17,7 @@ form {
 	padding: 20px 20px 80px 20px;
 	text-align: center;
 	border-radius: 20px;
-	width: 500px;
+	width: 600px;
 }
 
 h2{
@@ -28,7 +28,7 @@ h2{
 	display: flex;
 	width: 100%;
 	margin-bottom: 10px;
-	flex-direction: column; /* Changes the direction to column */
+	/*flex-direction: column;  Changes the direction to column */
 }
 
 .input-icon-container {

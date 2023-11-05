@@ -14,9 +14,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "user_registration")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class UserRegistration {
 
 	@Id
@@ -26,6 +23,9 @@ public class UserRegistration {
 
 	@Column(name = "user_name")
 	private String userName;
+	
+	@Column(name = "security_pin")
+	private int securityPin;
 	
 	@Column(name = "account_reset_flag")
 	private boolean accountResetFlag;
@@ -142,6 +142,14 @@ public class UserRegistration {
 
 	public void setUpdatedDate(LocalDateTime updatedDate) {
 		this.updatedDate = updatedDate;
+	}
+
+	public int getSecurityPin() {
+		return securityPin;
+	}
+
+	public void setSecurityPin(int securityPin) {
+		this.securityPin = securityPin;
 	}
 	
 	

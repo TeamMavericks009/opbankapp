@@ -1,8 +1,8 @@
 /*
  * Author      : Sarika Kondakindi
  * JIRA        : ELDHLP-67
- * Created Date: 2023-11-02
- * Description : Dropped the columns last_login_date, last_logout_date from dbo.user_login_history.
+ * Created Date: 2023-11-05
+ * Description : Added column security_pin in user_login, user_login_history. Removed security_pin from bank_account.
  */
 
 /*
@@ -11,7 +11,7 @@
  *  Date -------  JIRA  ---- Author ----------- Comments
  *  2023-11-02    ELDHLP-67  Sarika Kondakindi  Rename table dbo."transaction" to transactions since it is a reserved keyword.
  *  2023-11-02    ELDHLP-67  Sarika Kondakindi  Dropped the columns last_login_date, last_logout_date from dbo.user_login_history.
- * 
+ *  2023-11-05    ELDHLP-67  Sarika Kondakindi  Added column security_pin in user_login, user_login_history. Removed security_pin from bank_account.
  */
 
 
@@ -132,7 +132,7 @@ create sequence if not exists dbo.users_seq as bigint
  * Bank account table **/                     
 create table if not exists dbo.bank_account(bank_account_id  bigint,
     										bsb              char(6) not null,
-    										security_pin     varchar(10),
+    										--security_pin     varchar(10),
     										account_no       char(10) not null,
     										account_type     varchar(20) not null,
     										user_id          bigint not null,
@@ -216,7 +216,8 @@ create table if not exists dbo.user_login(user_login_id         bigint,
                                           user_name             varchar(25),
     									  encrypted_password    text not null,
     									  pswd_last_modified_on timestamp,
-    									  ip_address            inet not null,
+    									--  ip_address            inet null, 
+    									  security_pin          smallint,
     									  --user_name             varchar(30) not null,
     									  inserted_by           varchar(50) default current_user,
     									  inserted_date         timestamptz default now(),
@@ -244,7 +245,8 @@ create table if not exists dbo.user_login_history (user_login_history_id bigint,
                                                    encrypted_password    text,
                                                    --encryption            varchar(30), column removed
                                                    pswd_last_modified_on timestamp,
-                                                   ip_address            inet,
+                                                  -- ip_address            inet,
+                                                   security_pin          smallint,
                                                    --user_name             varchar(30),
                                                    --last_login_date       timestamp, dropped the columns
                                                    --last_logout_date      timestamp,
@@ -272,11 +274,12 @@ create table if not exists dbo.user_registration(user_registration_id bigint,
                                                  bank_account_id      bigint not null,
                                                  temp_password        text not null,
                                                  password             text,
+                                                 security_pin         smallint,
                                                  inserted_by          varchar(50) default current_user,
                                                  inserted_date        timestamptz default now(),
                                                  updated_by           varchar(50),
                                                  updated_date         timestamptz,
-                                               --  constraint user_registration_pk primary key(user_registration_id),
+                                                 constraint user_registration_pk primary key(user_registration_id),
                                                  --constraint user_registration_user_id_fk foreign key(user_id) references dbo.users(user_id),
                                                  constraint user_registration_user_name_fk foreign key(user_name) references dbo.users(user_name),
                                                  constraint user_registration_bank_account_id_fk foreign key(bank_account_id) references dbo.bank_account(bank_account_id)

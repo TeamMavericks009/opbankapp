@@ -39,19 +39,15 @@
 		<table class="account_summary">
 			<tr>
 				<td>Account Number:</td>
-				<td><span class="masked" id="accountNumber">*****6789</span></td>
+				<td><span class="masked" id="accountNumber" th:text="${param.accountNo}">*****6789</span></td>
 			</tr>
 			<tr>
 				<td>Balance:</td>
-				<td><span class="masked" id="balance">*****90</span></td>
+				<td><span class="masked" id="balance" th:text="${param.totalBalance}">*****90</span></td>
 			</tr>
 			<tr>
 				<td>Type of Account:</td>
 				<td>Savings</td>
-			</tr>
-			<tr>
-				<td>Last Logged In:</td>
-				<td>15-10-2023 11:45 AM</td>
 			</tr>
 			<tr>
 			<tr>
