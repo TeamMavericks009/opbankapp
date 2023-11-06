@@ -25,6 +25,7 @@ grant all on schema dbo to dbo;
 create extension pgcrypto; */
 
 /* Initial table drop */
+drop view if exists dbo.bank_transactions;
 drop table if exists dbo."transaction";
 drop table if exists dbo.transactions;
 drop table if exists dbo.transaction_type;
@@ -488,18 +489,36 @@ create sequence if not exists dbo.transactions_seq as bigint
                    start with 1 
                      owned by dbo.transactions.transaction_id; 
 					 
-/**do $$
-begin
-   if exists (select 1 
-                from pg_catalog.pg_constraint 
-               where conname = 'transactions_transaction_no_ak'
-                 and connamespace::regnamespace::text = 'dbo'
-                 and conrelid::regclass::text = 'transactions')
-   then 
-      raise info 'Dropping AK on dbo.transactions.transaction_no and creating AK on dbo.transactions.transaction_no,user_id ';
-      alter table dbo.transactions drop constraint if exists transactions_transaction_no_ak;
-      alter table dbo.transactions add constraint transactions_transaction_no_user_id_ak unique (transaction_no,user_id);
-   end if; 
-end $$ language plpgsql; **/
+/* VIEW Queries*/
 
+create or replace view dbo.bank_transactions as 
+select t.transaction_id,
+       u.user_id, concat(u.first_name||' ', u.last_name) as primary_name,
+       lp.full_name_of_payee as participant_name,
+       t.transaction_no,
+       tc.category ,
+       tt.transaction_type,
+       (case when tt.transaction_type = 'Debit' then '-' else '+' end||(t.transaction_amount)::numeric(10,2)) as transaction_amount_2,
+       t.transaction_amount ,
+       t.balance ,
+       t.transaction_date as transacton_date_with_ts,
+       t.transaction_date::date as transaction_date_wo,
+       t.status,
+       t.description,
+       ba.account_no
+from  dbo.transactions t ,
+      dbo.bank_account ba ,
+      dbo.users u ,
+      dbo.transaction_category tc ,
+      dbo.transaction_type tt ,
+      dbo.linked_payee lp
+where t.bank_account_id = ba.bank_account_id  
+and t.user_id = u.user_id
+and t.transaction_category_id  = tc.transaction_category_id
+and t.transaction_type_id  = tt.transaction_type_id
+and t.participant_account_id = lp.linked_payee_id
+--and ba.account_no = '81923903'
+--and t.transaction_date between '2022-12-18 00:00:00' and '2024-12-19 23:59:59'
+order by t.transaction_date;	               
+                     
 					 

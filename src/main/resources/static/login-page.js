@@ -64,4 +64,3 @@ function navigateToForgotPassword(event) {
     event.preventDefault(); // This prevents the form from submitting
     window.location.href = '/forgotDetails'; // This should match the URL mapping in Spring Boot controller
 }
-

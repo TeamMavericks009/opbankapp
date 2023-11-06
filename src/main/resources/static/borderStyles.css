@@ -71,6 +71,6 @@ nav a:hover {
   top: 180px; /* Set top to be just below the header */
   transform: translateX(-50%);
   /* Set the background color to blue with 50% opacity */
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgb(255, 255, 128);
   filter: blur(2px); /* Apply a blur effect to the line */
 }

@@ -72,6 +72,8 @@ public class BankAccount {
 	
 	@Column(name = "updated_date")
 	private LocalDateTime updatedDate;
+	
+	
 
 	public long getId() {
 		return id;

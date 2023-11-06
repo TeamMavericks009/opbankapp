@@ -18,8 +18,11 @@ function showBalance(elementId, fullValue) {
 // Previous JavaScript...
 
 function showBalanceAndAccount() {
-    showFullValue('balance', '100090');
-    showFullValue('accountNumber', '123456789');
+	var balance = document.getElementById('balance').getAttribute('data-balance');
+    var accountNumber = document.getElementById('accountNumber').getAttribute('data-account-number');
+    
+    showFullValue('balance', balance);
+    showFullValue('accountNumber', accountNumber);
 }
 
 function showFullValue(elementId, fullValue) {

@@ -3,12 +3,12 @@ package com.opbank.app.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.opbank.app.dao.UserRegisterRepository;
-import com.opbank.app.dao.UserRepository;
 import com.opbank.app.dto.UserInfoDto;
 import com.opbank.app.dto.UserRegistrationDto;
 import com.opbank.app.entity.UserLogin;
 import com.opbank.app.entity.UserRegistration;
+import com.opbank.app.repository.UserRegisterRepository;
+import com.opbank.app.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {

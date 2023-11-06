@@ -13,6 +13,14 @@
 <script th:src="@{static/try.js}" defer></script>
 <script th:src="@{static/click.js}" defer></script>
 <script th:src="@{static/botMaker.js}" defer></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var balance = /*[[${accountInfo.totalBalance}]]*/ 'defaultBalance';
+    var accountNumber = /*[[${accountInfo.accountNo}]]*/ 'defaultAccountNumber';
+    var fullName = /*[[${accountInfo.fullName}]]*/ 'defaultAccountNumber';
+    /*]]>*/
+</script>
+
 <title>dashboard</title>
 </head>
 <body>
@@ -33,17 +41,17 @@
 		<div class="bg">
 			<img th:src="@{static/old_man.png}" alt="Profile Image">
 		</div>
-		<h2 class="profile_header" th:text="${param.userName}">Profile name</h2>
+		<h2 class="profile_header" th:text="${accountInfo.fullName}"> Default Name</h2>
 
 		<h3>Account Summary</h3>
 		<table class="account_summary">
 			<tr>
 				<td>Account Number:</td>
-				<td><span class="masked" id="accountNumber" th:text="${param.accountNo}">*****6789</span></td>
+				<td><span class="masked" id="accountNumber" th:data-account-number="${accountInfo.accountNo}">*****6789</span></td>
 			</tr>
 			<tr>
 				<td>Balance:</td>
-				<td><span class="masked" id="balance" th:text="${param.totalBalance}">*****90</span></td>
+				<td><span class="masked" id="balance"  th:data-balance="${accountInfo.totalBalance}">*****90</span></td>
 			</tr>
 			<tr>
 				<td>Type of Account:</td>
@@ -64,6 +72,14 @@
 					th:style="'background-image: url('+ @{static/accounts.png} +');'"></button>
 				<label>Accounts</label>
 			</div>
+			
+			<div class="back-login">
+				<a href="accounts" class="btn_href">
+					<button onclick="postAndNavigate()" class="dashboard-button"
+					th:style="'background-image: url('+ @{static/accounts.png} +');'"></button> </a>
+					<label>Dupe Accounts</label>
+			</div>
+			
 			<div class="option">
 				<button onclick="navigate('transactions')" class="dashboard-button"
 					th:style="'background-image: url('+ @{static/transactions.png} +');'"></button>

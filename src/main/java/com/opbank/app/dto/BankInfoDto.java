@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class BankInfoDto {
 	private String accountNo; 
+	private String fullName;
 	private String accountType;
 	private String totalBalance;
 	private String bsb;
@@ -33,7 +34,10 @@ public class BankInfoDto {
 	public void setBsb(String bsb) {
 		this.bsb = bsb;
 	}
-	
-	
-	
+	public String getFullName() {
+		return fullName;
+	}
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
 }

@@ -7,12 +7,8 @@
 <link
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" th:href="@{accountStyles.css}">
-<link rel="stylesheet" href="accountStyles.css">
-<link rel="stylesheet" href="borderStyles.css">
 <link rel="stylesheet" th:href="@{static/borderStyles.css}">
-
+<link rel="stylesheet" th:href="@{static/accountStyles.css}">
 </head>
 <body>
 	<div class="fixed-header">
@@ -31,14 +27,16 @@
 		<div class="sidebar">
 			<h2>Menu</h2>
 			<ul>
-				<li><a href="#"><i class="fa fa-home"></i> &nbsp; Home</a></li>
-				<li><a href="#"><i class="fa fa-money""></i> &nbsp; Fund
-						Transfer</a></li>
-				<li><a href="#"><i class="fa fa-file-text-o"></i> &nbsp;
-						Statements</a></li>
-				<li><a href="#"><i class="fa fa-credit-card"></i> &nbsp;
-						Bank cards</a></li>
-				<li><a href="#"><i class="fa fa-cog"></i> &nbsp; Settings</a></li>
+				<li><a class="menu_item" href="#"><i class="fa fa-home"></i>
+						&nbsp; Home</a></li>
+				<li><a class="menu_item" href="#"><i class="fa fa-money"></i>
+						&nbsp; Fund Transfer</a></li>
+				<li><a class="menu_item" href="#"><i
+						class="fa fa-file-text-o"></i> &nbsp; Statements</a></li>
+				<li><a class="menu_item" href="#"><i
+						class="fa fa-credit-card"></i> &nbsp; Bank cards</a></li>
+				<li><a class="menu_item" href="#"><i class="fa fa-cog"></i>
+						&nbsp; Settings</a></li>
 			</ul>
 		</div>
 
@@ -62,18 +60,16 @@
 					<p>No goal saver account linked to your account.</p>
 				</section>
 
-
 				<section th:if="${hasCurrentAccount}" class="account">
 					<h2>Current account</h2>
 					<p>No current account linked to your account.</p>
 				</section>
-
 			</div>
 		</div>
 	</div>
 	<div class="fixed-footer">
-		<div class="container">Copyright &copy; 2023 AustraliaOldPeople
-			Bank</div>
+		<div class="container">Copyright &copy; 2023
+			AustraliaOldPeopleBank</div>
 	</div>
 </body>
 </html>
