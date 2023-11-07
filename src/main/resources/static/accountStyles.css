@@ -136,3 +136,37 @@ body {
 	display: table;
 	clear: both;
 } */
+
+
+.account {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.account-details {
+    flex: 1; /* allows this div to grow */
+    padding: 1em;
+}
+
+.account-stats {
+    flex: 1; /* allows this div to grow */
+    padding: 1em;
+}
+
+.buttons {
+    margin-top: 1em;
+}
+
+/* If you want the buttons to be inline with each other */
+.buttons a, .buttons button {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .account {
+        flex-direction: column;
+    }
+}

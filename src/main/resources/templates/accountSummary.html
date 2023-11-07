@@ -1,0 +1,74 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link th:href="@{static/chatbotStyles.css}" rel="stylesheet">
+<link rel="stylesheet" th:href="@{static/dashboardStyles.css}">
+<link rel="stylesheet" th:href="@{static/borderStyles.css}">
+<link rel="stylesheet" th:href="@{static/try.css}">
+<title>dashboard</title>
+</head>
+<body>
+	
+	<div class="fixed-header">
+		<div class="container">
+			<div class="logo-container">
+				<img th:src="@{static/bank_logo.png}" alt="Logo" class="logo">
+			</div>
+			<nav>
+				<a href="#">About Us</a> <a href="#">Contact Us</a> <a href="#">Log
+					out</a>
+			</nav>
+		</div>
+	</div>
+	
+	<div class = "payees_container">
+		<div class="row">
+			<h1>Transactions list</h1>
+		</div>
+		<table class="table table-striped table-boardered">
+			<thead class="table-dark">
+				<tr>
+					<th>S.No</th>
+					<th>Payee Name</th>
+					<th>Account Number</th>
+					<th>Bank</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="payeesList: ${payeesList}">
+				<td th:text = "${payeesList.id}"></td>
+				<td th:text = "${payeesList.payeeName}"></td>
+				<td th:text = "${payeesList.accountNo}"></td>
+				<td th:text = "${payeesList.payeeBank}"></td>
+				</tr>
+
+			</tbody>
+
+		</table>
+
+	</div>
+	
+	<div class = "stats_container">
+	
+	</div>
+	
+	<div clsss = "three_transactions">
+	
+	</div>
+	
+	
+	
+	<div class="fixed-footer">
+		<div class="container">Copyright &copy; 2023 AustraliaOldPeople
+			Bank</div>
+	</div>
+</body>
+</html>

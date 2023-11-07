@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AOP Bank - Accounts</title>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" th:href="@{static/Statementstyles.css}">
+<link rel="stylesheet" th:href="@{static/borderStyles.css}">
+<link rel="stylesheet" th:href="@{static/accountStyles.css}">
+</head>
+<body>
+	<div class="fixed-header">
+		<div class="container">
+			<div class="logo-container">
+				<img th:src="@{static/bank_logo.png}" alt="Logo" class="logo">
+			</div>
+			<nav>
+				<a href="#">About Us</a> <a href="#">Contact Us</a> <a href="#">Log
+					out</a>
+			</nav>
+		</div>
+	</div>
+	<div class="content-area">
+		<div class="wrapper">
+			<div class="sidebar">
+				<h2>Menu</h2>
+				<ul>
+					<li><a class="menu_item" href="dashboard"><i
+							class="fa fa-home"></i> &nbsp; Home</a></li>
+					<li><a class="menu_item" href="fundsTransfer"><i
+							class="fa fa-money"></i> &nbsp; Fund Transfer</a></li>
+					<li><a class="menu_item" href="statements"><i
+							class="fa fa-file-text-o"></i> &nbsp; Statements</a></li>
+					<li><a class="menu_item" href="#"><i
+							class="fa fa-credit-card"></i> &nbsp; Bank cards</a></li>
+					<li><a class="menu_item" href="#"><i class="fa fa-cog"></i>
+							&nbsp; Settings</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="container_box">
+			<div class="search-section">
+				<h2 class="hdr_Statements">Statements</h2>
+				<div class="search-field">
+					<label for="accountNumber">Account Number</label> <input
+						type="text" id="accountNumber" name="accountNumber"
+						placeholder="123*****" disabled>
+				</div>
+				<div class="search-field">
+					<label for="transactionDateFrom">Transaction Date From: </label> <input
+						type="date" id="transactionDateFrom" name="transactionDateFrom">
+					<label for="transactionDateTo"> To: </label> <input type="date"
+						id="transactionDateTo" name="transactionDateTo">
+				</div>
+				<div class="search-field">
+					<label for="transactionPeriod"> Transaction Period </label> <select
+						id="transactionPeriod" name="transactionPeriod">
+						<option value="">Select Period</option>
+						<option value="1">1 month</option>
+						<option value="3">3 month</option>
+						<option value="6">6 month</option>
+					</select>
+				</div>
+				<button onclick="clearSearch()">Clear</button>
+				<button onclick="searchTransactions()">View Statements</button>
+			</div>
+
+			<div class="transaction-history">
+				<h2>Transaction History</h2>
+				
+				<div class="row">
+					<h1>Transactions list</h1>
+				</div>
+			<div class="transaction-history-container">	
+				<table class="table table-striped table-boardered">
+					<thead class="table-dark">
+						<tr>
+							<th>Date</th>
+							<th>Transaction no</th>
+							<th>Amount</th>
+							<th>Description</th>
+							<th>Balance</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="transaction: ${transaction}">
+							<td th:text="${transaction.date}"></td>
+							<td th:text="${transaction.transactionNo}"></td>
+							<td th:text="${transaction.Amount}"></td>
+							<td th:text="${transaction.description}"></td>
+							<td th:text="${transaction.balance}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="fixed-footer">
+		<div class="container">Copyright &copy; 2023
+			AustraliaOldPeopleBank</div>
+	</div>
+</body>
+
+
+</html>

@@ -1,0 +1,126 @@
+.wrapper {
+  /* Your existing styles for .wrapper, if any */
+  flex: 1; /* This will allow .wrapper to grow and shrink as needed */
+  min-width: 250px; /* Adjust minimum width as needed */
+}
+
+.hdr_Statements {
+	color: #4d4da1;
+	font-size: 30px;
+	font-style: arial;
+	padding: 5px;
+} 
+
+.search-section {
+	margin-left: 300px;
+	border: 3px solid black;
+	padding: 30px;
+	margin-top: 15px;
+}
+
+.search-field {
+	padding: 10px;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Main content box */
+.container-box {
+  flex: 3;
+  background-color: #fff;
+  padding: 500px;
+  margin-left: 20px;
+  width: 50%; /* Adjusted width */
+  border-radius: 8px ;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border : 3px solid black;
+}
+
+label {
+	padding: 10px;
+	font-family: Arial;
+	font-size: 18px;
+}
+
+/* Form input styling */
+input[type="text"],
+select
+{
+  border: 1px solid #000000;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  width: 40%; /* Full width */
+  font-size: 18px;
+}
+button {
+	 border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  width: 20%; 
+}
+
+
+.submit_btn {
+	  background-color: #4d4da1; /* Lighter blue background */
+  color: white;
+  cursor: pointer;
+  border: none;
+  text-transform: uppercase; /* Makes text uppercase */ 
+   border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  width: 20%; 
+}
+
+input[type="text"]:focus,
+select:focus {
+  outline: none;
+  border-color: 1px #4d4da1; /* Highlighted with the lighter blue */
+  box-shadow: 0 0 8px rgba(77, 77, 161, 0.5);
+  padding: 10px;
+}
+
+/* Button styling */
+button {
+  background-color: #4d4da1; /* Lighter blue background */
+  color: white;
+  cursor: pointer;
+  border: none;
+  text-transform: uppercase; /* Makes text uppercase */
+}
+
+button:hover {
+  background-color: #3c3c7c; /* Slightly darker on hover */
+}
+
+/* This gives the gradient effect to your buttons if needed */
+.button-gradient {
+  background-image: linear-gradient(to bottom, #4d4da1, #1a1a7e);
+}
+
+.transaction-history-container {
+	width: 100%;
+  overflow-x: auto;
+}
+
+/* Table styling */
+.transaction-history table {
+  width: 78%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-left: 300px;
+  table-layout: fixed;
+}
+
+.transaction-history th {
+  background-color: #4d4da1; /* Lighter blue for headers */
+  color: #fff;
+  padding: 10px;
+}
+
+.transaction-history td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}

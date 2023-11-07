@@ -32,7 +32,6 @@ public class Transaction {
 	@Column(name = "transaction_no")
 	private long transactionNo;
 	
-	
 	@Column(name = "transaction_category_id")
 	private int TransactionCategoryId;
 	

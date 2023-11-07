@@ -46,7 +46,7 @@ public class DashboardController {
 	  public String userDashboard(Model model) {
 			model.addAttribute("user", new UserLogin());
 			System.out.println("inside dashboard GEt method"); 
-			return "redirect:/dashboard";
+			return "dashboard";
 	  }
 	
 	@RequestMapping(value = "/accounts", method = RequestMethod.GET) 
@@ -54,5 +54,12 @@ public class DashboardController {
 			model.addAttribute("user", new UserLogin());
 			System.out.println("inside accounts GEt method"); 
 			return "accounts";
+	  }
+	
+	@RequestMapping(value = "/statements", method = RequestMethod.GET) 
+	  public String statements(Model model) {
+			model.addAttribute("user", new UserLogin());
+			System.out.println("inside accounts GEt method"); 
+			return "statements";
 	  }
 }

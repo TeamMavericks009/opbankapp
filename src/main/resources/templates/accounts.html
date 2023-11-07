@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AOP Bank - Accounts</title>
-<link
-	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
 <link rel="stylesheet" th:href="@{static/borderStyles.css}">
 <link rel="stylesheet" th:href="@{static/accountStyles.css}">
@@ -27,12 +26,12 @@
 		<div class="sidebar">
 			<h2>Menu</h2>
 			<ul>
-				<li><a class="menu_item" href="#"><i class="fa fa-home"></i>
-						&nbsp; Home</a></li>
-				<li><a class="menu_item" href="#"><i class="fa fa-money"></i>
+				<li><a class="menu_item" href="dashboard"><i class="fa fa-home"></i>
+						&nbsp; Home</a></li> 
+				<li><a class="menu_item" href="fundsTransfer"><i class="fa fa-money"></i>
 						&nbsp; Fund Transfer</a></li>
-				<li><a class="menu_item" href="#"><i
-						class="fa fa-file-text-o"></i> &nbsp; Statements</a></li>
+				<li><a class="menu_item" href="statements">
+					<i class="fa fa-file-text-o"></i> &nbsp; Statements</a></li>
 				<li><a class="menu_item" href="#"><i
 						class="fa fa-credit-card"></i> &nbsp; Bank cards</a></li>
 				<li><a class="menu_item" href="#"><i class="fa fa-cog"></i>
@@ -52,7 +51,19 @@
 					<p>
 						BSB number: <span th:text="${savingsBSBNumber}">636-636</span>
 					</p>
-					<button>View More</button>
+
+					<a href="accountSummary" class="btn_href">
+						<button>view Payees</button>
+					</a>
+
+					<button onclick="navigateAcctSummary()">View More</button>
+				</section>
+
+				<section class="account">
+					<h2>Goal Saver account</h2>
+					<p>No goal saver linked to your account.</p>
+					<button type="button" disabled>Set up</button>
+
 				</section>
 
 				<section th:if="${hasCurrentAccount}" class="account">
@@ -64,9 +75,49 @@
 					<h2>Current account</h2>
 					<p>No current account linked to your account.</p>
 				</section>
+
+				<section class="account">
+				<h2>Savings account</h2>
+					<div class="account-details">
+						<p>
+							Account number: <span th:text="${savingsAccountNumber}">21XXXXX</span>
+						</p>
+						<p>
+							BSB number: <span th:text="${savingsBSBNumber}">636-636</span>
+						</p>
+						<div class="buttons">
+							<a href="getAllPayees" class="btn_href">
+								<button>view Payees</button>
+							</a>
+							<button onclick="navigateAcctSummary()">View More</button>
+						</div>
+					</div>
+					<div class="account-stats">
+						<!-- Insert statistical information here -->
+						<p>
+							In flow <span>Value</span>
+						</p>
+						<p>
+							Out flow <span>Value</span>
+						</p>
+					</div>
+				</section>
 			</div>
 		</div>
 	</div>
+
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p>Payees information...</p>
+			<!-- You can add more content here such as images or text -->
+		</div>
+
+	</div>
+
 	<div class="fixed-footer">
 		<div class="container">Copyright &copy; 2023
 			AustraliaOldPeopleBank</div>

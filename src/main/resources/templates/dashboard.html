@@ -67,27 +67,23 @@
 
 	<div class="dashboard_block">
 		<div class="dashboard">
-			<div class="option">
-				<button onclick="postAndNavigate()" class="dashboard-button"
-					th:style="'background-image: url('+ @{static/accounts.png} +');'"></button>
-				<label>Accounts</label>
-			</div>
-			
 			<div class="back-login">
 				<a href="accounts" class="btn_href">
 					<button onclick="postAndNavigate()" class="dashboard-button"
 					th:style="'background-image: url('+ @{static/accounts.png} +');'"></button> </a>
-					<label>Dupe Accounts</label>
+					<label>Accounts</label>
 			</div>
 			
 			<div class="option">
-				<button onclick="navigate('transactions')" class="dashboard-button"
-					th:style="'background-image: url('+ @{static/transactions.png} +');'"></button>
+				<a href="statements" class="btn_href">
+				<button onclick="navigate('fundsTransfer')" class="dashboard-button"
+					th:style="'background-image: url('+ @{static/transactions.png} +');'"></button> </a>
 				<label>Transactions</label>
 			</div>
 			<div class="option">
+			<a href="statements" class="btn_href">
 				<button onclick="navigate('statements')" class="dashboard-button"
-					th:style="'background-image: url('+ @{static/statements.jpg} + ');'"></button>
+					th:style="'background-image: url('+ @{static/statements.jpg} + ');'"></button> </a>
 				<label>Statements</label>
 			</div>
 			<div class="option">
