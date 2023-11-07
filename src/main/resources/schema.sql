@@ -1,8 +1,8 @@
 /*
  * Author      : Sarika Kondakindi
  * JIRA        : ELDHLP-67
- * Created Date: 2023-11-05
- * Description : Added column security_pin in user_login, user_login_history. Removed security_pin from bank_account.
+ * Created Date: 2023-11-07
+ * Description : Added view to load the current month transaction summary for user under Accounts >> Savings Account >> Overall spend this month.					 
  */
 
 /*
@@ -12,6 +12,7 @@
  *  2023-11-02    ELDHLP-67  Sarika Kondakindi  Rename table dbo."transaction" to transactions since it is a reserved keyword.
  *  2023-11-02    ELDHLP-67  Sarika Kondakindi  Dropped the columns last_login_date, last_logout_date from dbo.user_login_history.
  *  2023-11-05    ELDHLP-67  Sarika Kondakindi  Added column security_pin in user_login, user_login_history. Removed security_pin from bank_account.
+ *  2023-11-07    ELDHLP-67  Sarika Kondakindi  Added view to load the current month transaction summary for user under Accounts >> Savings Account >> Overall spend this month.					 
  */
 
 
@@ -521,4 +522,40 @@ and t.participant_account_id = lp.linked_payee_id
 --and t.transaction_date between '2022-12-18 00:00:00' and '2024-12-19 23:59:59'
 order by t.transaction_date;	               
                      
-					 
+                  
+-- View to load the current month transaction summary for user under Accounts >> Savings Account >> Overall spend this month.					 
+
+create or replace view dbo.v_current_month_transaction_summary as
+select user_id, 
+       user_name, 
+       primary_name,
+       sum(case when transaction_type = 'Credit' 
+                then transaction_amount 
+                else 0
+            end) as credit_transaction_amount,
+       sum(case when transaction_type = 'Debit' 
+                then transaction_amount 
+                else 0 
+            end) as debit_transaction_amount,
+       max(final_balance) final_balance
+ from ( select u.user_id,
+               u.user_name,
+               concat(u.first_name||' ', u.last_name) as primary_name,
+               tt.transaction_type,
+               t.transaction_date,
+               t.transaction_amount transaction_amount,
+               last_value(t.balance) over(partition by u.user_id range between unbounded preceding 
+                                                                           and unbounded following) final_balance
+         from  dbo.transactions t,
+               dbo.users u,
+               dbo.transaction_type tt
+         where t.user_id = u.user_id
+           and t.transaction_type_id  = tt.transaction_type_id
+           and t.transaction_date::date between date_trunc('MONTH',current_date)::date 
+                                            and (date_trunc('MONTH',current_date)+interval '1 month'-interval '1 day')::date
+         order by u.user_id,t.transaction_date
+      ) q 
+group by user_id, 
+         user_name, 
+         primary_name;
+			 
