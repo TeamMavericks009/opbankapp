@@ -25,6 +25,8 @@ grant all privileges on database opbank to dbo;
 grant all on schema dbo to dbo;
 create extension pgcrypto; */
 
+DROP VIEW if exists dbo.v_current_month_transaction_summary;
+
 /* Initial table drop */
 drop view if exists dbo.bank_transactions;
 drop table if exists dbo."transaction";
@@ -489,6 +491,8 @@ create sequence if not exists dbo.transactions_seq as bigint
                      minvalue 1 
                    start with 1 
                      owned by dbo.transactions.transaction_id; 
+                     
+alter table dbo.transactions alter column transaction_id set default  nextval('dbo.transactions_seq');
 					 
 /* VIEW Queries*/
 

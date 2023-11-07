@@ -16,7 +16,7 @@
 				<img th:src="@{static/bank_logo.png}" alt="Logo" class="logo">
 			</div>
 			<nav>
-				<a href="#">About Us</a> <a href="#">Contact Us</a> <a href="#">Log
+				<a href="#">About Us</a> <a href="#">Contact Us</a> <a href="login">Log
 					out</a>
 			</nav>
 		</div>
@@ -63,7 +63,6 @@
 					<h2>Goal Saver account</h2>
 					<p>No goal saver linked to your account.</p>
 					<button type="button" disabled>Set up</button>
-
 				</section>
 
 				<section th:if="${hasCurrentAccount}" class="account">
@@ -104,18 +103,6 @@
 				</section>
 			</div>
 		</div>
-	</div>
-
-	<!-- The Modal -->
-	<div id="myModal" class="modal">
-
-		<!-- Modal content -->
-		<div class="modal-content">
-			<span class="close">&times;</span>
-			<p>Payees information...</p>
-			<!-- You can add more content here such as images or text -->
-		</div>
-
 	</div>
 
 	<div class="fixed-footer">

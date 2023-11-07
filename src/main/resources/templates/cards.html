@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AOP Bank - Cards</title>
+<link
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" th:href="@{static/borderStyles.css}">
+<link rel="stylesheet" th:href="@{static/accountStyles.css}">
+<link rel="stylesheet" th:href="@{static/cardStyles.css}">
+<script defer src="cards.js"></script>
+</head>
+<body>
+
+	<div class="fixed-header">
+		<div class="container">
+			<div class="logo-container">
+				<img th:src="@{static/bank_logo.png}" alt="Logo" class="logo">
+			</div>
+			<nav>
+				<a href="#">About Us</a> <a href="#">Contact Us</a> <a href="login">Log
+					out</a>
+			</nav>
+		</div>
+	</div>
+	
+<div class = "wrapper">
+	<div class="sidebar">
+			<h2>Menu</h2>
+			<ul>
+				<li><a class="menu_item" href="dashboard"><i class="fa fa-home"></i>
+						&nbsp; Home</a></li> 
+				<li><a class="menu_item" href="fundsTransfer"><i class="fa fa-money"></i>
+						&nbsp; Fund Transfer</a></li>
+				<li><a class="menu_item" href="statements">
+					<i class="fa fa-file-text-o"></i> &nbsp; Statements</a></li>
+				<li><a class="menu_item" href="#"><i
+						class="fa fa-credit-card"></i> &nbsp; Bank cards</a></li>
+				<li><a class="menu_item" href="#"><i class="fa fa-cog"></i>
+						&nbsp; Settings</a></li>
+			</ul>
+		</div>
+	
+	<div class = "card-container">
+		<h2 class="hdr_card">Savings account debit card</h2> <br> <br>
+		<table class="card-details">
+			<tr>
+				<th>Card Number</th>
+				<th>Cardholder's Name</th>
+				<th>Expiry Date</th>
+				<th>CVC</th>
+				<th>Action</th>
+			</tr>
+			<tr>
+				<td id="table-number">#### #### #### ####</td>
+				<td id="table-name">FULL NAME</td>
+				<td id="table-expiry">MM/YY</td>
+				<td id="table-cvc">CVC</td>
+				<td><button class="disable-btn">Disable Card</button></td>
+			</tr>
+		</table>
+		<br> <br> <br>
+		<div class = "msg_container">
+			<p> NOTE: Do not share your details to anyone. In case of stolen card or loss of card. Please immediately contact bank </p>
+			<p> or disabled your card </p>
+		</div>
+	</div>
+</div>
+	<div class="fixed-footer">
+		<div class="container">Copyright &copy; 2023
+			AustraliaOldPeopleBank</div>
+	</div>
+
+</body>
+</html>
+
+</body>
+</html>
+
