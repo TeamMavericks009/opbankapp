@@ -21,33 +21,32 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserLoginHistory {
 
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	@Column(name = "user_login_id")
 	private long userLoginId;
-	
+
 	@Column(name = "user_name")
 	private String userName;
-	
+
 	@Column(name = "encrypted_password")
 	private String encryptedPassword;
-	
+
 	@Column(name = "encryption")
 	private String encryption;
 
 	@Column(name = "pswd_last_modified_on")
 	private Timestamp pswdLastModifiedOn;
-	
+
 	@Column(name = "ip_address")
-	private InetAddress ipAddress;	
-	
+	private InetAddress ipAddress;
+
 	@Column(name = "inserted_by")
 	private String insertedBy;
-	
-	@Column(name = "inserted_date")
-	private LocalDateTime insertedDate;	
 
-}	
+	@Column(name = "inserted_date")
+	private LocalDateTime insertedDate;
+
+}

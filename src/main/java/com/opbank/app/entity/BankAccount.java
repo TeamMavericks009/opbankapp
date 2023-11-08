@@ -27,53 +27,51 @@ public class BankAccount {
 
 	@Column(name = "bsb")
 	private String bsb;
-	
+
 	@Column(name = "account_no")
 	private String accountNo;
-	
+
 	@Column(name = "account_type")
 	private String accountType;
 
 	@Column(name = "user_id")
 	private long userId;
-	
+
 	@Column(name = "currency_type")
 	private String currencyType;
-	
+
 	@Column(name = "balance")
 	private Float balance;
-	
+
 	@Column(name = "interest_rate")
 	private Float interestRate;
-	
+
 	@Column(name = "minimum_balance")
 	private Float minimumBalance;
-	
+
 	@Column(name = "is_joint_account")
 	private Boolean isJointAccount;
-	
+
 	@Column(name = "tfn")
 	private String tfn;
-	
+
 	@Column(name = "status")
 	private String status;
-	
+
 	@Column(name = "last_active_on")
 	private LocalDateTime lastActiveOn;
-	
+
 	@Column(name = "inserted_by")
 	private String insertedBy;
-	
+
 	@Column(name = "inserted_date")
-	private LocalDateTime insertedDate;	
-	
+	private LocalDateTime insertedDate;
+
 	@Column(name = "updated_by")
 	private String updatedBy;
-	
+
 	@Column(name = "updated_date")
 	private LocalDateTime updatedDate;
-	
-	
 
 	public long getId() {
 		return id;
@@ -209,8 +207,6 @@ public class BankAccount {
 
 	public void setUpdatedDate(LocalDateTime updatedDate) {
 		this.updatedDate = updatedDate;
-	}	
-	
-	
-	
-}	
+	}
+
+}

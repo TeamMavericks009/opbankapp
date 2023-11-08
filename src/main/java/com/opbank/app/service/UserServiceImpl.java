@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRegisterRepository userRegisterRepo;
-	
+
 	@Override
 	public UserLogin saveUser(UserRegistrationDto userRegistrationDto) {
 		UserLogin userLogin = new UserLogin(userRegistrationDto.getUserName(), userRegistrationDto.getNewPassword());
@@ -33,29 +33,27 @@ public class UserServiceImpl implements UserService {
 			userRegister.setPassword(userRegistrationDTO.getNewPassword());
 			userRegister.setSecurityPin(Integer.valueOf(userRegistrationDTO.getSecurePin()));
 			userRegister.setAccountResetFlag(true);
-		return userRegisterRepo.save(userRegister);
-		}
-		else {
+			return userRegisterRepo.save(userRegister);
+		} else {
 			throw new Exception("No user available");
 		}
 	}
-	
+
 	public UserRegistration forgotPassword(UserRegistrationDto userRegistrationDto) throws Exception {
 		System.out.println("Inside service impl of save register");
 		UserRegistration userRegister = fetchRegisteredUser(userRegistrationDto);
-		if (userRegister != null && (isUserValid(userRegister.getSecurityPin(), Integer.valueOf(userRegistrationDto.getSecurePin())))) {
+		if (userRegister != null
+				&& (isUserValid(userRegister.getSecurityPin(), Integer.valueOf(userRegistrationDto.getSecurePin())))) {
 			System.out.println(userRegister.getBankAccountId() + " ********Bank acct id ");
 			userRegister.setPassword(userRegistrationDto.getNewPassword());
 			userRegister.setAccountResetFlag(true);
-		return userRegisterRepo.save(userRegister);
-		}
-		else 
+			return userRegisterRepo.save(userRegister);
+		} else
 			throw new Exception("No user available");
 	}
-	
 
 	private boolean isUserValid(int securityPin, int dtoSecurePin) {
-		if(securityPin == dtoSecurePin)
+		if (securityPin == dtoSecurePin)
 			return true;
 		return false;
 	}
@@ -67,23 +65,24 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public long getUserInfo(UserInfoDto userDto) {
-		
+
 		UserLogin user = fetchUserFromLogin(userDto);
-		if(user!= null && isUserLoginValid(user.getEncryptedPassword(), userDto.getEncryptedPassword())) {
+		if (user != null && isUserLoginValid(user.getEncryptedPassword(), userDto.getEncryptedPassword())) {
 			return user.getId();
 		}
-		return (Long) null;
+		return 0;
 	}
 
 	private UserLogin fetchUserFromLogin(UserInfoDto userDto) {
 		System.out.println(userDto.getUserName() + " ***********UserDto name");
-		 UserLogin userLogin = userRepository.findByUserName(userDto.getUserName());
-		 return userLogin;
+		UserLogin userLogin = userRepository.findByUserName(userDto.getUserName());
+		return userLogin;
 	}
-	
+
 	private boolean isUserLoginValid(String passwd, String dtoPasswrd) {
-		if(passwd.equals(dtoPasswrd))
+		if (passwd.equals(dtoPasswrd))
 			return true;
 		return false;
 	}
+
 }

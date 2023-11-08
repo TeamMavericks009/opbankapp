@@ -7,7 +7,6 @@ import com.opbank.app.entity.UserLogin;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserLogin, Long> {
-	
+
 	UserLogin findByUserName(String userName);
 }
-

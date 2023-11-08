@@ -26,32 +26,32 @@ public class UserPreferences {
 
 	@Column(name = "user_id")
 	private long userId;
-	
+
 	@Column(name = "view_type")
 	private char viewType;
-	
+
 	@Column(name = "panel_customization")
 	private char panelCustomization;
-	
+
 	@Column(name = "font_size")
 	private BigDecimal fontSize;
-	
+
 	@Column(name = "font_type")
 	private String fontType;
-	
+
 	@Column(name = "font_colour")
 	private String fontColour;
-	
+
 	@Column(name = "inserted_by")
 	private String insertedBy;
-	
+
 	@Column(name = "inserted_date")
-	private LocalDateTime insertedDate;	
-	
+	private LocalDateTime insertedDate;
+
 	@Column(name = "updated_by")
 	private String updatedBy;
-	
-	@Column(name = "updated_date")
-	private LocalDateTime updatedDate;	
 
-}	
+	@Column(name = "updated_date")
+	private LocalDateTime updatedDate;
+
+}

@@ -6,9 +6,9 @@ import com.opbank.app.entity.UserLogin;
 import com.opbank.app.entity.UserRegistration;
 
 public interface UserService {
-	
+
 	UserRegistration save(UserRegistrationDto userRegistrationDto) throws Exception;
-	
+
 	UserRegistration forgotPassword(UserRegistrationDto userRegistrationDto) throws Exception;
 
 	UserLogin saveUser(UserRegistrationDto userRegistrationDto);

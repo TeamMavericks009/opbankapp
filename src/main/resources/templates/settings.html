@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link th:href="@{static/chatbotStyles.css}" rel="stylesheet">
+<link rel="stylesheet" th:href="@{static/accountStyles.css}">
+<link rel="stylesheet" th:href="@{static/borderStyles.css}">
+<link rel="stylesheet" th:href="@{static/settings.css}">
+<link
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<title>dashboard</title>
+</head>
+<body class ="settings">
+
+	<div class="fixed-header">
+		<div class="container">
+			<div class="logo-container">
+				<img th:src="@{static/bank_logo.png}" alt="Logo" class="logo">
+			</div>
+			<nav>
+				<a href="#">About Us</a> <a href="#">Contact Us</a> <a href="login">Log
+					out</a>
+			</nav>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="sidebar">
+			<h2>Menu</h2>
+			<ul>
+				<li><a class="menu_item" href="dashboard"><i
+						class="fa fa-home"></i> &nbsp; Home</a></li>
+				<li><a class="menu_item" href="fundsTransfer"><i
+						class="fa fa-money"></i> &nbsp; Fund Transfer</a></li>
+				<li><a class="menu_item" href="statements"> <i
+						class="fa fa-file-text-o"></i> &nbsp; Statements
+				</a></li>
+				<li><a class="menu_item" href="#"><i
+						class="fa fa-credit-card"></i> &nbsp; Bank cards</a></li>
+				<li><a class="menu_item" href="settings"><i class="fa fa-cog"></i>
+						&nbsp; Settings</a></li>
+			</ul>
+		</div>
+
+		<div class="settings-container">
+			<div class="card">
+				<div class="circle">
+					<img th:src="@{static/images/user.png}">
+				</div>
+				<div class="content">
+
+					<h2>Profile</h2>
+					<p>• Update personal information</p>
+					<p>• Change password</p>
+					<p>• Address</p>
+					<p>• contact information</p>
+					<p>• Other profile settings</p>
+
+
+					<a href="">Edit</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="circle">
+					<img th:src="@{static/images/savings.png}">
+				</div>
+				<div class="content">
+
+					<h2>Account</h2>
+					<p>• Update account information</p>
+					<p>• view transaction limits</p>
+					<p>• communication information</p>
+					<p>• Other profile settings</p>
+					<br>
+					<a href="">Edit</a>
+				</div>
+			</div>
+			<div class="card">
+				<div class="circle">
+					<img th:src="@{static/images/debit-card.png}">
+				</div>
+				<div class="content">
+
+					<h2>  Cards</h2>
+					<p>• Disable card</p>
+					<p>• View card transfer limit</p>
+					<p>• Other profile settings</p>
+					<br> <br>
+					<a href="">Edit</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="fixed-footer">
+		<div class="container">Copyright &copy; 2023
+			AustraliaOldPeopleBank</div>
+	</div>
+</body>
+</html>

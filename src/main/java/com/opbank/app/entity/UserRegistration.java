@@ -23,36 +23,34 @@ public class UserRegistration {
 
 	@Column(name = "user_name")
 	private String userName;
-	
+
 	@Column(name = "security_pin")
 	private int securityPin;
-	
+
 	@Column(name = "account_reset_flag")
 	private boolean accountResetFlag;
-	
+
 	@Column(name = "bank_account_id")
 	private long bankAccountId;
 
 	@Column(name = "temp_password")
 	private String tempPassword;
-	
+
 	@Column(name = "password")
-	private String password;	
-	
+	private String password;
+
 	@Column(name = "inserted_by")
 	private String insertedBy;
-	
+
 	@Column(name = "inserted_date")
-	private LocalDateTime insertedDate;	
-	
+	private LocalDateTime insertedDate;
+
 	@Column(name = "updated_by")
 	private String updatedBy;
-	
+
 	@Column(name = "updated_date")
 	private LocalDateTime updatedDate;
 
-	
-	
 	public UserRegistration() {
 		super();
 	}
@@ -151,6 +149,5 @@ public class UserRegistration {
 	public void setSecurityPin(int securityPin) {
 		this.securityPin = securityPin;
 	}
-	
-	
-}	
+
+}

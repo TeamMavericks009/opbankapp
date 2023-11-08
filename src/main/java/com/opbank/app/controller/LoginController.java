@@ -35,7 +35,8 @@ public class LoginController {
 	}
 
 	@PostMapping("/registration")
-	public String registerUser(@ModelAttribute("UserRegistration") UserRegistrationDto registerDto, RedirectAttributes redirectAttr) {
+	public String registerUser(@ModelAttribute("UserRegistration") UserRegistrationDto registerDto,
+			RedirectAttributes redirectAttr) {
 		System.out.println("inside show registration form");
 		String msg = "";
 		try {
@@ -44,33 +45,33 @@ public class LoginController {
 			msg = " You have successfully registered, please go back and login to your account";
 		} catch (Exception e) {
 			System.out.println("Inside controller post method exception");
-			msg = " There is an error registering your profile, please contact customer support";			
+			msg = " There is an error registering your profile, please contact customer support";
 			e.printStackTrace();
 		}
 		redirectAttr.addFlashAttribute("message", msg);
 		return "redirect:/register";
 	}
 
-	
-	  @RequestMapping(value = "/login", method = RequestMethod.GET) 
-	  public String afterRegister(Model model) {
-			model.addAttribute("user", new UserLogin());
-			System.out.println("inside login get method after register"); 
-			return "login";
-	  }
-	 
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String afterRegister(Model model) {
+		model.addAttribute("user", new UserLogin());
+		System.out.println("inside login get method after register");
+		return "login";
+	}
+
 	@GetMapping("/register")
 	public String showRegistrationForm(Model model) {
-		return "Registration"; 
+		return "Registration";
 	}
-	
+
 	@GetMapping("/forgotDetails")
 	public String showForgotDetailsForm(Model model) {
-		return "forgotDetails"; 
+		return "forgotDetails";
 	}
-	
+
 	@PostMapping("/forgotPassword")
-	public String forgotUser(@ModelAttribute("UserRegistration") UserRegistrationDto registerDto, RedirectAttributes redirectAttr) {
+	public String forgotUser(@ModelAttribute("UserRegistration") UserRegistrationDto registerDto,
+			RedirectAttributes redirectAttr) {
 		System.out.println("inside show registration form");
 		String msg = "";
 		try {
@@ -79,7 +80,7 @@ public class LoginController {
 			msg = " You have successfully resetted your password, please go back and login to your account";
 		} catch (Exception e) {
 			System.out.println("Inside controller post method exception");
-			msg = " There is an error resetting your profile, please contact customer support";			
+			msg = " There is an error resetting your profile, please contact customer support";
 			e.printStackTrace();
 		}
 		redirectAttr.addFlashAttribute("message", msg);

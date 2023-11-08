@@ -13,11 +13,11 @@ import com.opbank.app.entity.Transaction;
 @Repository
 public interface TransactionsRepo extends JpaRepository<Transaction, Long> {
 
-	 List<Transaction> findByUserId(long userId);
-	 
-	 List<Transaction> findByUserIdAndStatus(long userId, String status);
-	 
-	 @Query("SELECT MAX(t.transactionNo) FROM Transaction t WHERE t.userId = :userId")
-	 long findMaxTransactionNoByUserId(@Param("userId") long userId);
+	List<Transaction> findByUserId(long userId);
+
+	List<Transaction> findByUserIdAndStatus(long userId, String status);
+
+	@Query("SELECT MAX(t.transactionNo) FROM Transaction t WHERE t.userId = :userId")
+	long findMaxTransactionNoByUserId(@Param("userId") long userId);
 
 }

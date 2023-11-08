@@ -22,35 +22,35 @@ public class UserLogin {
 
 	@Column(name = "user_name")
 	private String userName;
-	
+
 	@Column(name = "security_pin")
 	private int securityPin;
-	
+
 	@Column(name = "encrypted_password")
 	private String encryptedPassword;
-	
+
 	@Column(name = "pswd_last_modified_on")
 	private LocalDateTime pswdLastModifiedOn;
-	
+
 	/*
 	 * @Column(name = "ip_address") private InetAddress ipAddress;
 	 */
-	
+
 	@Column(name = "inserted_by")
 	private String insertedBy;
-	
+
 	@Column(name = "inserted_date")
-	private LocalDateTime insertedDate;	
-	
+	private LocalDateTime insertedDate;
+
 	@Column(name = "updated_by")
 	private String updatedBy;
-	
+
 	@Column(name = "updated_date")
 	private LocalDateTime updatedDate;
 
 	public UserLogin() {
 	}
-	
+
 	public UserLogin(String userName, String encryptedPassword) {
 		this.userName = userName;
 		this.encryptedPassword = encryptedPassword;
@@ -63,7 +63,7 @@ public class UserLogin {
 	public void setId(long id) {
 		this.id = id;
 	}
-	
+
 	public int getSecurityPin() {
 		return securityPin;
 	}
@@ -110,5 +110,4 @@ public class UserLogin {
 		this.updatedBy = updatedBy;
 	}
 
-
-}	
+}

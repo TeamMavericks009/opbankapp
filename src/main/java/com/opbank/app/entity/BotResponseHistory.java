@@ -25,26 +25,26 @@ public class BotResponseHistory {
 
 	@Column(name = "session_id")
 	private long sessionId;
-	
+
 	@Column(name = "user_request")
 	private String userRequest;
-	
+
 	@Column(name = "bot_response")
 	private String botResponse;
-	
+
 	@Column(name = "user_id")
 	private long userId;
-	
+
 	@Column(name = "inserted_by")
 	private String insertedBy;
-	
+
 	@Column(name = "inserted_date")
-	private LocalDateTime insertedDate;	
-	
+	private LocalDateTime insertedDate;
+
 	@Column(name = "updated_by")
 	private String updatedBy;
-	
-	@Column(name = "updated_date")
-	private LocalDateTime updatedDate;	
 
-}	
+	@Column(name = "updated_date")
+	private LocalDateTime updatedDate;
+
+}

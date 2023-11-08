@@ -14,47 +14,47 @@ import jakarta.persistence.Id;
 public class BankTransactions {
 	@Id
 	@Column(name = "transaction_id", updatable = false, nullable = false)
-	private Long id; 
+	private Long id;
 
 	@Column(name = "user_id")
 	private long userId;
-	
+
 	@Column(name = "primary_name")
 	private String primaryName;
-	
+
 	@Column(name = "transaction_no")
 	private String transactionNo;
-	
+
 	@Column(name = "participant_name")
 	private String payeeFullName;
-	
+
 	@Column(name = "category")
-	private String category; 
-	
+	private String category;
+
 	@Column(name = "transaction_type")
-	private String transactionType; 
-	
+	private String transactionType;
+
 	@Column(name = "transaction_amount_2")
 	private String transactionAmount;
-	
+
 	@Column(name = "transaction_amount")
 	private String transactionAmountNoSym;
-	
+
 	@Column(name = "balance")
 	private String balance;
-	
+
 	@Column(name = "transacton_date_with_ts")
 	private Timestamp transactionDateWithTS;
-	
+
 	@Column(name = "transaction_date_wo")
 	private Date transactionDate;
-	
+
 	@Column(name = "status")
 	private String status;
-	
+
 	@Column(name = "description")
 	private String description;
-	
+
 	@Column(name = "account_no")
 	private String accountNo;
 

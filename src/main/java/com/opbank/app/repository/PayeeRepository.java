@@ -10,11 +10,11 @@ import com.opbank.app.entity.LinkedPayee;
 
 @Repository
 public interface PayeeRepository extends JpaRepository<LinkedPayee, Long> {
-	
+
 	LinkedPayee findByPayeeName(String payeeName);
-	
+
 	List<LinkedPayee> findByPayeeAccountId(long userId);
-	
+
 	LinkedPayee save(LinkedPayee newPayee);
 
 }

@@ -10,5 +10,5 @@ import com.opbank.app.entity.BankAccount;
 public interface BankRepo extends JpaRepository<BankAccount, Long> {
 
 	BankAccount findByUserId(long bankId);
-	
+
 }

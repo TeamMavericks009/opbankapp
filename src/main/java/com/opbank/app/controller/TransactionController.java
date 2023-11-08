@@ -38,10 +38,11 @@ public class TransactionController {
 	}
 
 	@PostMapping("/fund_transfer")
-	public String fundTransfer(@ModelAttribute("FundTransfer") FundTransferDto fundsDto, RedirectAttributes redirectAttr) throws Exception {
+	public String fundTransfer(@ModelAttribute("FundTransfer") FundTransferDto fundsDto,
+			RedirectAttributes redirectAttr) throws Exception {
 		String msg = "Error while transfering funds";
-		if(transactionService.fundTransfer(fundsDto))  {
-			msg = "Money transfer to " + fundsDto.getPayeeName() + " is succesful"; 
+		if (transactionService.fundTransfer(fundsDto)) {
+			msg = "Money transfer to " + fundsDto.getPayeeName() + " is succesful";
 		}
 		redirectAttr.addFlashAttribute("message", msg);
 		return "fundsTransfer";

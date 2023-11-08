@@ -4,10 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AOP Bank - Accounts</title>
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+<link
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
 <link rel="stylesheet" th:href="@{static/borderStyles.css}">
 <link rel="stylesheet" th:href="@{static/accountStyles.css}">
+<script defer th:src="@{static/accounts.js}"></script>
 </head>
 <body>
 	<div class="fixed-header">
@@ -26,79 +28,66 @@
 		<div class="sidebar">
 			<h2>Menu</h2>
 			<ul>
-				<li><a class="menu_item" href="dashboard"><i class="fa fa-home"></i>
-						&nbsp; Home</a></li> 
-				<li><a class="menu_item" href="fundsTransfer"><i class="fa fa-money"></i>
-						&nbsp; Fund Transfer</a></li>
-				<li><a class="menu_item" href="statements">
-					<i class="fa fa-file-text-o"></i> &nbsp; Statements</a></li>
+				<li><a class="menu_item" href="dashboard"><i
+						class="fa fa-home"></i> &nbsp; Home</a></li>
+				<li><a class="menu_item" href="fundsTransfer"><i
+						class="fa fa-money"></i> &nbsp; Fund Transfer</a></li>
+				<li><a class="menu_item" href="statements"> <i
+						class="fa fa-file-text-o"></i> &nbsp; Statements
+				</a></li>
 				<li><a class="menu_item" href="#"><i
 						class="fa fa-credit-card"></i> &nbsp; Bank cards</a></li>
-				<li><a class="menu_item" href="#"><i class="fa fa-cog"></i>
+				<li><a class="menu_item" href="settings"><i class="fa fa-cog"></i>
 						&nbsp; Settings</a></li>
 			</ul>
 		</div>
 
 		<div class="main_content">
-			<div class="accounts_header">Your bank accounts list</div>
+			<div class="accounts_header">Your linked bank accounts</div>
 			<div class="info">
 
 				<section class="account">
-					<h2>Savings account</h2>
-					<p>
-						Account number: <span th:text="${savingsAccountNumber}">21XXXXX</span>
-					</p>
-					<p>
-						BSB number: <span th:text="${savingsBSBNumber}">636-636</span>
-					</p>
-
-					<a href="accountSummary" class="btn_href">
-						<button>view Payees</button>
-					</a>
-
-					<button onclick="navigateAcctSummary()">View More</button>
-				</section>
-
-				<section class="account">
-					<h2>Goal Saver account</h2>
-					<p>No goal saver linked to your account.</p>
-					<button type="button" disabled>Set up</button>
-				</section>
-
-				<section th:if="${hasCurrentAccount}" class="account">
-					<h2>Goal Saver account</h2>
-					<p>No goal saver account linked to your account.</p>
-				</section>
-
-				<section th:if="${hasCurrentAccount}" class="account">
-					<h2>Current account</h2>
-					<p>No current account linked to your account.</p>
-				</section>
-
-				<section class="account">
-				<h2>Savings account</h2>
+					<!-- <div class="account-header">
+						<h2>Savings account</h2> -->
+						<span class="magnifier" onclick="zoomIn()">🔍 Zoom</span>
+					<!-- </div> -->
 					<div class="account-details">
 						<p>
-							Account number: <span th:text="${savingsAccountNumber}">21XXXXX</span>
+							Account number: <span th:text="${accountInfo.accountNo}">21XXXXX</span>
 						</p>
 						<p>
-							BSB number: <span th:text="${savingsBSBNumber}">636-636</span>
+							BSB number: <span th:text="${accountInfo.bsb}">6XXXXX</span>
 						</p>
+						<p>
+							Total balance: <span th:text="${accountInfo.totalBalance}">636-636</span>
+						</p>
+
 						<div class="buttons">
 							<a href="getAllPayees" class="btn_href">
-								<button>view Payees</button>
+								<button>View Payees</button>
 							</a>
 							<button onclick="navigateAcctSummary()">View More</button>
 						</div>
 					</div>
+
+
+					<div class="thin-line"></div>
+
 					<div class="account-stats">
-						<!-- Insert statistical information here -->
-						<p>
-							In flow <span>Value</span>
-						</p>
-						<p>
-							Out flow <span>Value</span>
-						</p>
+						<div class="financial-dashboard">
+							<!-- Insert statistical information here -->
+							<p>Your account activity for this month</p>
+							<br>
+							<p class="bar in-bar"
+								th:style="'width: calc((' + ${accountInfo.inFlow} + ' / (' + ${accountInfo.inFlow} + ' + ' + ${accountInfo.outFlow} + ')) * 100%);'">
+								In flow <span class="bar-text">$1235.15 </span>
+							</p>
+
+							<p class="bar out-bar"
+								th:style="'width: calc((' + ${accountInfo.outFlow} + ' / (' + ${accountInfo.inFlow} + ' + ' + ${accountInfo.outFlow} + ')) * 100%);'">
+								Out flow <span class="bar-text">$567.23</span>
+							</p>
+						</div>
 					</div>
 				</section>
 			</div>

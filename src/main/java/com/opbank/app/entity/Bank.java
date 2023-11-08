@@ -25,29 +25,29 @@ public class Bank {
 
 	@Column(name = "bank_name")
 	private String bankName;
-	
+
 	@Column(name = "address")
 	private String address;
-	
+
 	@Column(name = "branch_name")
 	private String branch_name;
-	
+
 	@Column(name = "branch_code")
 	private String branchCode;
 
 	@Column(name = "branch_manager")
 	private String branchManager;
-	
+
 	@Column(name = "inserted_by")
 	private String insertedBy;
-	
+
 	@Column(name = "inserted_date")
-	private LocalDateTime insertedDate;	
-	
+	private LocalDateTime insertedDate;
+
 	@Column(name = "updated_by")
 	private String updatedBy;
-	
-	@Column(name = "updated_date")
-	private LocalDateTime updatedDate;	
 
-}	
+	@Column(name = "updated_date")
+	private LocalDateTime updatedDate;
+
+}

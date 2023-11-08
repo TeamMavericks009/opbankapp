@@ -51,7 +51,8 @@
 				
 			</div>
 
-			<button type="submit" class="btn">Submit</button>
+			<button type="submit" class="btn">Submit</button> <br>
+			<span class="flash-msg" th:text="${loginError}"></span>
 
 			<h2>Did you forget your username or password??</h2>
 			<button id="forgotPassword" onclick="navigateToForgotPassword(event)" class="btn" >Click Here</button>

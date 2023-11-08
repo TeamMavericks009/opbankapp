@@ -26,31 +26,31 @@ public class LinkedPayee {
 
 	@Column(name = "sender_bank_account_id")
 	private long payeeAccountId;
-	
+
 	@Column(name = "nick_name_of_payee")
 	private String nickNameOfPayee;
-	
+
 	@Column(name = "account_no")
 	private String accountNo;
-	
+
 	@Column(name = "bsb")
 	private String bsb;
 
 	@Column(name = "full_name_of_payee")
 	private String payeeName;
-	
+
 	@Column(name = "bank_name")
 	private String payeeBankName;
-	
+
 	@Column(name = "inserted_by")
 	private String insertedBy;
-	
+
 	@Column(name = "inserted_date")
-	private LocalDateTime insertedDate;	
-	
+	private LocalDateTime insertedDate;
+
 	@Column(name = "updated_by")
 	private String updatedBy;
-	
+
 	@Column(name = "updated_date")
 	private LocalDateTime updatedDate;
 
@@ -140,5 +140,5 @@ public class LinkedPayee {
 
 	public void setUpdatedDate(LocalDateTime updatedDate) {
 		this.updatedDate = updatedDate;
-	}	
-}	
+	}
+}

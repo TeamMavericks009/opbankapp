@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class cardController {
+public class SettingsController {
 
-	@RequestMapping(value = "/viewCards", method = RequestMethod.GET)
+	@RequestMapping(value = "/settings", method = RequestMethod.GET)
 	public String getAccountsSummary(Model model) {
-		System.out.println("inside bank cards page");
-		return "cards";
+		System.out.println("inside settings page");
+		return "settings";
 	}
 }

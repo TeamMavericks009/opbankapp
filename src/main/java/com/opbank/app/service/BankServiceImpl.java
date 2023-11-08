@@ -12,28 +12,30 @@ import com.opbank.app.repository.BankRepo;
 import com.opbank.app.repository.UsersRepo;
 
 @Service
-public class BankServiceImpl implements BankService  {
+public class BankServiceImpl implements BankService {
 
 	@Autowired
 	private BankRepo bankRepo;
-	
+
 	@Autowired
 	private UsersRepo usersRepo;
-	
+
 	public BankInfoDto getBankAccountInfo(long bankId) {
 		BankAccount bankaccount = bankRepo.findByUserId(bankId);
 		Optional<Users> users = usersRepo.findById(bankaccount.getUserId());
 		BankInfoDto bankInfoDto = new BankInfoDto();
-		
-		if(bankaccount != null) {
+
+		if (bankaccount != null) {
 			bankInfoDto.setAccountNo(bankaccount.getAccountNo());
 			bankInfoDto.setTotalBalance(String.valueOf(bankaccount.getBalance()));
 			bankInfoDto.setAccountType(bankaccount.getAccountType());
 			bankInfoDto.setBsb(bankaccount.getBsb());
 			if (users.isPresent()) {
-				bankInfoDto.setFullName(users.get().getFirstName()+" "+users.get().getLastName());
+				bankInfoDto.setFullName(users.get().getFirstName() + " " + users.get().getLastName());
 			}
 		}
+		bankInfoDto.setInFlow("1234.4");
+		bankInfoDto.setOutFlow("1000.4");
 		return bankInfoDto;
 	}
 }

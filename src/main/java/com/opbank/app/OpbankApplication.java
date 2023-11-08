@@ -10,10 +10,9 @@ import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 @EnableAutoConfiguration
 @SpringBootApplication
 public class OpbankApplication {
-	
 
 	public static void main(String[] args) {
 		SpringApplication.run(OpbankApplication.class, args);
-		
+
 	}
 }

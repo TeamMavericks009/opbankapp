@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.opbank.app.entity.UserRegistration;
 
 @Repository
-public interface UserRegisterRepository extends JpaRepository<UserRegistration, Long>{
+public interface UserRegisterRepository extends JpaRepository<UserRegistration, Long> {
 
 	UserRegistration findByUserName(String userName);
 

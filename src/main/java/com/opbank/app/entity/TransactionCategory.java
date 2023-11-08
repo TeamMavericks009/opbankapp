@@ -25,20 +25,20 @@ public class TransactionCategory {
 
 	@Column(name = "category")
 	private String category;
-	
+
 	@Column(name = "description")
 	private String description;
-	
+
 	@Column(name = "inserted_by")
 	private String insertedBy;
-	
+
 	@Column(name = "inserted_date")
-	private LocalDateTime insertedDate;	
-	
+	private LocalDateTime insertedDate;
+
 	@Column(name = "updated_by")
 	private String updatedBy;
-	
-	@Column(name = "updated_date")
-	private LocalDateTime updatedDate;	
 
-}	
+	@Column(name = "updated_date")
+	private LocalDateTime updatedDate;
+
+}

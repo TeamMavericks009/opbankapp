@@ -13,5 +13,5 @@ public interface TransactionService {
 	public List<TransactionDto> getAllUserTransactions(long user_id);
 
 	public boolean fundTransfer(FundTransferDto fundsDto);
-	
+
 }

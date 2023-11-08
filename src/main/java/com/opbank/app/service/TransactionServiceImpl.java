@@ -28,48 +28,46 @@ import com.opbank.app.repository.TransactionsRepo;
 import com.opbank.app.repository.UserRepository;
 
 @Service
-public class TransactionServiceImpl implements TransactionService{
+public class TransactionServiceImpl implements TransactionService {
 
 	@Autowired
 	private TransactionsRepo transactionRepo;
-	
+
 	@Autowired
 	private BankTransactionsRepository bankTransactionsRepo;
-	
+
 	@Autowired
 	private BankRepo bankRepo;
-	
+
 	@Autowired
 	private UserRepository userRepository;
 
 	@Autowired
 	private PayeeRepository payeeRepo;
-	
+
 	@Override
 	public List<TransactionDto> getAllUserTransactions(long user_id) {
 
 		List<TransactionDto> transactionSetObj = new ArrayList<>();
-		List<Transaction> dataTrasactions= transactionRepo.findByUserId(user_id);
-		
-		List<Transaction> testTrasactions= transactionRepo.findByUserIdAndStatus(user_id,"Success");
+		List<Transaction> dataTrasactions = transactionRepo.findByUserId(user_id);
+
+		List<Transaction> testTrasactions = transactionRepo.findByUserIdAndStatus(user_id, "Success");
 		System.out.println(testTrasactions.size() + " **********size of success transactions");
-		
+
 		List<BankTransactions> viewTransaction = bankTransactionsRepo.findByUserId(1);
 		System.out.println(viewTransaction.size() + " **********VIEW************");
-		
-		
+
 		try {
-			List<BankTransactions> periodTransactions = bankTransactionsRepo.findByUserIdAndTransactionDateBetween(1, converToDate("2023-10-18") ,
-					converToDate("2023-10-19"));
+			List<BankTransactions> periodTransactions = bankTransactionsRepo.findByUserIdAndTransactionDateBetween(1,
+					converToDate("2023-10-18"), converToDate("2023-10-19"));
 			System.out.println(periodTransactions.size() + " **********Date Transaction_FROM VIEW************");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		if(dataTrasactions != null) {
-			for(Transaction obj: dataTrasactions) {
+
+		if (dataTrasactions != null) {
+			for (Transaction obj : dataTrasactions) {
 				TransactionDto transaction = new TransactionDto();
 				transaction.setDate(getFormattedDate(obj.getTransaction_date()));
 				transaction.setTransactionNo(String.valueOf(obj.getTransactionNo()));
@@ -81,43 +79,43 @@ public class TransactionServiceImpl implements TransactionService{
 		}
 		return transactionSetObj;
 	}
-	
+
 	public String getFormattedDate(Timestamp timestamp) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDateTime localDateTime = timestamp.toLocalDateTime();
-        return localDateTime.format(formatter);
-    }
-	
-	  public Date converToDate(String dt) throws ParseException {
-			  Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dt);
-	    System.out.println(dt + " / " + date);
-	    return date;
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		LocalDateTime localDateTime = timestamp.toLocalDateTime();
+		return localDateTime.format(formatter);
+	}
+
+	public Date converToDate(String dt) throws ParseException {
+		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dt);
+		System.out.println(dt + " / " + date);
+		return date;
 	}
 
 	@Override
 	public boolean fundTransfer(FundTransferDto fundsDto) {
 		long userId = fetchUserFromLogin(fundsDto.getUserName());
-		float amountToTransfer= Float.parseFloat(fundsDto.getAmountToTransfer());
+		float amountToTransfer = Float.parseFloat(fundsDto.getAmountToTransfer());
 		float actualBalance = 0;
-		
-		if(userId >0) {
-			Optional<BankAccount>  acct=  bankRepo.findById(userId);
+
+		if (userId > 0) {
+			Optional<BankAccount> acct = bankRepo.findById(userId);
 			actualBalance = acct.get().getBalance() - amountToTransfer;
 			acct.get().setBalance(actualBalance);
 			bankRepo.save(acct.get());
-			if(saveTransaction(userId, fundsDto, acct.get().getId(), actualBalance))
+			if (saveTransaction(userId, fundsDto, acct.get().getId(), actualBalance))
 				return true;
 		}
 		return false;
 	}
-	
+
 	private boolean saveTransaction(long userId, FundTransferDto fundsDto, long userBankId, float actualBalance) {
-		
-		long maxTransactionNum =  transactionRepo.findMaxTransactionNoByUserId(userId);
+
+		long maxTransactionNum = transactionRepo.findMaxTransactionNoByUserId(userId);
 		LinkedPayee payee = payeeRepo.findByPayeeName(fundsDto.getPayeeName());
 		Transaction obj = new Transaction();
 		obj.setUserId(userId);
-		obj.setTransactionNo(maxTransactionNum+1);
+		obj.setTransactionNo(maxTransactionNum + 1);
 		obj.setTransactionAmount(new BigDecimal(fundsDto.getAmountToTransfer()));
 		obj.setBankAccountId(userBankId);
 		obj.setParticipantAccountId(payee.getId());
@@ -127,14 +125,14 @@ public class TransactionServiceImpl implements TransactionService{
 		obj.setTransaction_date(Timestamp.valueOf(LocalDateTime.now()));
 		obj.setStatus("Success");
 		Transaction transactionObj = transactionRepo.save(obj);
-		if(transactionObj != null) 
+		if (transactionObj != null)
 			return true;
 		return false;
 	}
 
 	private long fetchUserFromLogin(String userName) {
 		System.out.println("Bella3");
-		 UserLogin userLogin = userRepository.findByUserName("Bella3");
-		 return userLogin.getId();
+		UserLogin userLogin = userRepository.findByUserName("Bella3");
+		return userLogin.getId();
 	}
 }

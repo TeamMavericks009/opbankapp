@@ -28,46 +28,46 @@ public class Transaction {
 
 	@Column(name = "bank_account_id")
 	private long bankAccountId;
-	
+
 	@Column(name = "transaction_no")
 	private long transactionNo;
-	
+
 	@Column(name = "transaction_category_id")
 	private int TransactionCategoryId;
-	
+
 	@Column(name = "transaction_type_id")
 	private int transactionTypeId;
-	
+
 	@Column(name = "transaction_amount")
 	private BigDecimal transactionAmount;
-	
+
 	@Column(name = "participant_account_id")
 	private long participantAccountId;
-	
+
 	@Column(name = "balance")
 	private BigDecimal balance;
-	
+
 	@Column(name = "status")
 	private String status;
-	
+
 	@Column(name = "user_id")
 	private long userId;
-	
+
 	@Column(name = "transaction_date")
 	private Timestamp transaction_date;
-	
+
 	@Column(name = "description")
 	private String description;
-	
+
 	@Column(name = "inserted_by")
 	private String insertedBy;
-	
+
 	@Column(name = "inserted_date")
-	private LocalDateTime insertedDate;	
-	
+	private LocalDateTime insertedDate;
+
 	@Column(name = "updated_by")
 	private String updatedBy;
-	
+
 	@Column(name = "updated_date")
 	private LocalDateTime updatedDate;
 
@@ -197,5 +197,5 @@ public class Transaction {
 
 	public void setTransactionNo(long transactionNo) {
 		this.transactionNo = transactionNo;
-	}	
-}	
+	}
+}

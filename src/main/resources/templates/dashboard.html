@@ -9,15 +9,11 @@
 <link rel="stylesheet" th:href="@{static/borderStyles.css}">
 <link rel="stylesheet" th:href="@{static/try.css}">
 <script defer th:src="@{static/dashboard.js}"></script>
-<script defer th:src="@{static/chatbot.js}"></script>
-<script th:src="@{static/try.js}" defer></script>
-<script th:src="@{static/click.js}" defer></script>
-<script th:src="@{static/botMaker.js}" defer></script>
 <script th:inline="javascript">
     /*<![CDATA[*/
     var balance = /*[[${accountInfo.totalBalance}]]*/ 'defaultBalance';
     var accountNumber = /*[[${accountInfo.accountNo}]]*/ 'defaultAccountNumber';
-    var fullName = /*[[${accountInfo.fullName}]]*/ 'defaultAccountNumber';
+    var fullName = /*[[${accountInfo.fullName}]]*/ 'Account Holder name';
     /*]]>*/
 </script>
 

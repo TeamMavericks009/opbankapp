@@ -25,26 +25,26 @@ public class UserFeedback {
 
 	@Column(name = "feedback_type")
 	private String feedbackType;
-	
+
 	@Column(name = "feedback_header")
 	private String feedbackHeader;
-	
+
 	@Column(name = "description")
 	private String description;
-	
+
 	@Column(name = "comments")
 	private String comments;
-	
+
 	@Column(name = "inserted_by")
 	private String insertedBy;
-	
+
 	@Column(name = "inserted_date")
-	private LocalDateTime insertedDate;	
-	
+	private LocalDateTime insertedDate;
+
 	@Column(name = "updated_by")
 	private String updatedBy;
-	
-	@Column(name = "updated_date")
-	private LocalDateTime updatedDate;	
 
-}	
+	@Column(name = "updated_date")
+	private LocalDateTime updatedDate;
+
+}
