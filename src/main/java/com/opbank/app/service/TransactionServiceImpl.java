@@ -131,8 +131,8 @@ public class TransactionServiceImpl implements TransactionService {
 	}
 
 	private long fetchUserFromLogin(String userName) {
-		System.out.println("Bella3");
-		UserLogin userLogin = userRepository.findByUserName("Bella3");
+		System.out.println("Charlie3");
+		UserLogin userLogin = userRepository.findByUserNameIgnoreCase("Charlie3");
 		return userLogin.getId();
 	}
 }

@@ -82,7 +82,7 @@ public class UserServiceImpl implements UserService {
 
 	private UserLogin fetchUserFromLogin(UserInfoDto userDto) {
 		System.out.println(userDto.getUserName() + " ***********UserDto name");
-		UserLogin userLogin = userRepository.findByUserName(userDto.getUserName());
+		UserLogin userLogin = userRepository.findByUserNameIgnoreCase(userDto.getUserName());
 		return userLogin;
 	}
 

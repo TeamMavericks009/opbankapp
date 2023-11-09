@@ -14,7 +14,7 @@
                         values(nextval('dbo.address_seq'), 518, 5, 'Crown Street', 'Precinct', 'Cronulla', '2910', '2013', 'Australia', 301, 15,  'Transit Street', 'Boulevard', 'Epping', 'NSW', '2910', 'Australia');
             
        insert into dbo.users(user_id, user_name, first_name, last_name, middle_name, person_title, date_of_birth, gender, email, phone_number, address_id)
-			          values(nextval('dbo.users_seq'), 'Bella3','Bella', 'Swan', 'Marie', 'Ms.', '1996-10-15', 'Female', 'bella.swan@gmail.com', '123456789', 1),
+			          values(nextval('dbo.users_seq'), 'Charlie3','Charlie', 'Swan', 'Marie', 'Ms.', '1996-10-15', 'Female', 'Charlie.swan@gmail.com', '123456789', 1),
 			                (nextval('dbo.users_seq'), 'Smith9', 'Will', 'Smith', NULL, 'Mr.', '1981-03-18', 'Male', null, '987654321', 2),
 			                (nextval('dbo.users_seq'), 'Ziva', 'Ziva', 'David', 'Pablo', 'Ms.', '1991-04-29', 'Female', 'ziva.david@gmail.com', '911654321', 3),
 			                (nextval('dbo.users_seq'), 'Gibbs005', 'Gibbs', 'Leroy', 'Jethro', 'Mr.', '1992-06-03', 'Male', 'gibbs.jethro@gmail.com', '987114321', 4),
@@ -42,7 +42,7 @@
 
 
 
-select   dbo.fnc_insert_sample_data_linked_payee(piv_user_name => 'Bella3',
+select   dbo.fnc_insert_sample_data_linked_payee(piv_user_name => 'Charlie3',
 piv_nick_name_of_payee =>  'Henry', 
 piv_account_no => '93197888',
 piv_bsb  => '402860',
@@ -51,7 +51,7 @@ piv_bank_name => 'Metro Financial Pty Ltd'
 
 ) ;
 
- select   dbo.fnc_insert_sample_data_linked_payee(piv_user_name => 'Bella3',
+ select   dbo.fnc_insert_sample_data_linked_payee(piv_user_name => 'Charlie3',
 piv_nick_name_of_payee =>  'David', 
 piv_account_no => '93197102',
 piv_bsb  => '473560',
@@ -59,7 +59,7 @@ piv_full_name_of_payee => 'David Wilson',
 piv_bank_name => 'Capital Financial Pty Ltd'
 
 ) ;
- select   dbo.fnc_insert_sample_data_linked_payee(piv_user_name => 'Bella3',
+ select   dbo.fnc_insert_sample_data_linked_payee(piv_user_name => 'Charlie3',
 piv_nick_name_of_payee =>  'Oliver', 
 piv_account_no => '93120196',
 piv_bsb  => '409266',
@@ -67,7 +67,7 @@ piv_full_name_of_payee => 'Oliver Nguyen',
 piv_bank_name => 'Heritage Financial Pty Ltd'
 
 ) ;
- select   dbo.fnc_insert_sample_data_linked_payee(piv_user_name => 'Bella3',
+ select   dbo.fnc_insert_sample_data_linked_payee(piv_user_name => 'Charlie3',
 piv_nick_name_of_payee =>  'Lucas', 
 piv_account_no => '93197920',
 piv_bsb  => '402203',
@@ -75,7 +75,7 @@ piv_full_name_of_payee => 'Lucas Brown',
 piv_bank_name => 'United Street Bank Pty Ltd'
 
 ) ;
- select   dbo.fnc_insert_sample_data_linked_payee(piv_user_name => 'Bella3',
+ select   dbo.fnc_insert_sample_data_linked_payee(piv_user_name => 'Charlie3',
 piv_nick_name_of_payee =>  'Theodore', 
 piv_account_no => '93197888',
 piv_bsb  => '402860',
@@ -83,7 +83,7 @@ piv_full_name_of_payee => 'Theodore Smith',
 piv_bank_name => 'Digital Finance Group Pty Ltd'
 
 ) ;
- select   dbo.fnc_insert_sample_data_linked_payee(piv_user_name => 'Bella3',
+ select   dbo.fnc_insert_sample_data_linked_payee(piv_user_name => 'Charlie3',
 piv_nick_name_of_payee =>  'James', 
 piv_account_no => '93192308',
 piv_bsb  => '501030',
@@ -91,7 +91,7 @@ piv_full_name_of_payee => 'James Ryan',
 piv_bank_name => 'Metro Financial Pty Ltd'
 
 ) ;
- select   dbo.fnc_insert_sample_data_linked_payee(piv_user_name => 'Bella3',
+ select   dbo.fnc_insert_sample_data_linked_payee(piv_user_name => 'Charlie3',
 piv_nick_name_of_payee =>  'James N', 
 piv_account_no => '93197047',
 piv_bsb  => '493860',
@@ -99,7 +99,7 @@ piv_full_name_of_payee => 'James Nguyen' ,
 piv_bank_name => 'Cyber One Bank Pty Ltd'
 
 ) ;
- select   dbo.fnc_insert_sample_data_linked_payee(piv_user_name => 'Bella3',
+ select   dbo.fnc_insert_sample_data_linked_payee(piv_user_name => 'Charlie3',
 piv_nick_name_of_payee =>  'Henry N', 
 piv_account_no => '93190396',
 piv_bsb  => '401836',
@@ -387,7 +387,7 @@ piv_bank_name => 'Union Growth Bank Pty Ltd'
 
 	                 
        insert into dbo.cards(card_id, card_number, account_id, expiry_date, cvv, name_on_card, card_type)
-                      values(nextval('dbo.cards_seq'), '8192019012341234', 1, '2033-09-01', '999', 'Bella Swan', 'Debit'),
+                      values(nextval('dbo.cards_seq'), '8192019012341234', 1, '2033-09-01', '999', 'Charlie Swan', 'Debit'),
                             (nextval('dbo.cards_seq'), '1234019012341234', 2, '2031-08-01', '123', 'Will Smith', 'Debit'),
                             (nextval('dbo.cards_seq'), '9999019012341234', 3, '2029-04-01', '456', 'Ziva David', 'Debit'),
                             (nextval('dbo.cards_seq'), '5678019012341234', 4, '2026-01-01', '789', 'Gibbs Leroy', 'Debit'),
@@ -398,7 +398,7 @@ piv_bank_name => 'Union Growth Bank Pty Ltd'
               crypt(first_name||right(phone_number,4), gen_salt('bf')), current_date-2/*,'182.189.12.53' */,'1234' AS security_pin-- , concat(first_name||' ', last_name) as user_name
          from dbo.users;
          
-         update user_login set encrypted_password = '1234' where user_name = 'Bella3';
+         update user_login set encrypted_password = '1234' where user_name = 'Charlie3';
        
        insert into dbo.user_login_history(user_login_history_id, user_login_id,user_name/*, login_id*/, encrypted_password, pswd_last_modified_on /*, ip_address */, security_pin/*, user_name*//*, last_login_date, last_logout_date*/, record_status)
        select nextval('dbo.user_login_history_seq'),user_login_id,user_name/*,login_id*/, encrypted_password, pswd_last_modified_on/*,ip_address */,security_pin/*, user_name*/ /*, current_date-2, current_date-1*/,'I'
