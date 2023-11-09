@@ -137,7 +137,6 @@ body {
 	clear: both;
 } */
 
-
 .account {
     display: flex;
     justify-content: space-between;
@@ -169,4 +168,9 @@ body {
     .account {
         flex-direction: column;
     }
+}
+
+.zoom-btn {
+	background-color: white;
+	padding: 5px 5px;	
 }

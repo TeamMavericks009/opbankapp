@@ -45,15 +45,15 @@
 		<div class="main_content">
 			<div class="accounts_header">Your linked bank accounts</div>
 			<div class="info">
-	
-				<h2><i class='fas fa-piggy-bank' style="font-size:40px;color:blue"></i> Savings account</h2>
-				<section class="account" id="card">
+
+				
 					<!-- <div class="account-header"> -->
-
-					<p class="zoom-hdr">Zoom: </p>
-					<span class="magnifier" onclick="zoomIn()"> 🔍In</span> <p class="zoom-hdr"> | </p> <span
-						class="magnifier" onclick="zoomOut()"> 🔍Out</span>
-
+						<h2>Savings account</h2>
+						<section class="account" id="card">
+						<p class="zoom-hdr"> Zoom</p>
+					 <span class="magnifier" onclick="zoomIn()">🔍In</span>
+					 <span class="magnifier" onclick="zoomOut()">🔍Out</span>
+					 
 					<div class="account-details">
 						<p>
 							Account number: <span th:text="${accountInfo.accountNo}">21XXXXX</span>
@@ -78,7 +78,7 @@
 					<div class="account-stats">
 						<div class="financial-dashboard">
 							<!-- Insert statistical information here -->
-							<p> <i class="fa fa-bar-chart" style="font-size:40px;color:red"></i> Your account activity for this month</p>
+							<p>Your account activity for this month</p>
 							<br>
 							<p class="bar in-bar"
 								th:style="'width: calc((' + ${accountInfo.inFlow} + ' / (' + ${accountInfo.inFlow} + ' + ' + ${accountInfo.outFlow} + ')) * 100%);'">
@@ -90,9 +90,6 @@
 								Out flow <span class="bar-text">$567.23</span>
 							</p>
 						</div>
-						<br> 
-							<br>
-							<br>
 					</div>
 				</section>
 			</div>
