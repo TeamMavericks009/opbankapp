@@ -10,14 +10,7 @@
 <link rel="stylesheet" th:href="@{static/styles/borderStyles.css}">
 <link rel="stylesheet" th:href="@{static/styles/accountStyles.css}">
 <script defer th:src="@{static/js/accounts.js}"></script>
-<!-- <script type="text/javascript">
-	document.addEventListener('DOMContentLoaded', function() {
-		if (window.location.href.indexOf("accounts") > -1) {
-			document.querySelector('a[href="accounts"]').parentNode.classList
-					.add('active-menu-item');
-		}
-	});
-</script> -->
+<script defer th:src="@{static/js/chatbot.js}"></script>
 </head>
 <body>
 	<div class="fixed-header">
@@ -120,6 +113,13 @@
 						</div>
 					</div>
 				</section>
+				
+				<section class="account">
+					<h2>Goal Saver account</h2>
+					<p>No goal saver account linked to your account.</p>
+					<button disabled> Set up</button>
+				</section>
+				
 			</div>
 		</div>
 	</div>

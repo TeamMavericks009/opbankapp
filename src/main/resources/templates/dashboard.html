@@ -84,46 +84,14 @@
 			</div>
 			<div class="option">
 			<a href="cards" class="btn_href">	<button onclick="navigate('cards')" class="dashboard-button"
-					th:style="'background-image: url('+ @{static/images/debit-card.png} +');'"></button> </a>
+					th:style="'background-image: url('+ @{static/images/credit-card.jpg} +');'"></button> </a>
 				<label>Bank Cards</label>
 			</div>
 			<div class="option">
-				<button onclick="navigate('help')" class="dashboard-button"
-					th:style="'background-image: url('+ @{static/images/help.jpg} +');'"></button>
-				<label>Settings</label>
+			<a href="settings" class="btn_href">		<button onclick="navigate('settings')" class="dashboard-button"
+					th:style="'background-image: url('+ @{static/images/settings.jpg} +');'"></button></a>
+				<label>Settings</label> 
 			</div>
-
-			<!-- <button class="chatbot-toggler">
-				<span class="material-symbols-rounded">
-					<p class="bot_info">Hi, I am Ava, click on me for help :)</p> <img
-					th:src="@{static/images/avatar2.png}" alt="test" class="avatar">
-				</span> <span class="close_text">close</span>
-			</button> -->
-
-			<!-- <div class="chatbot">
-				<header>
-					<h2>Chatbot</h2>
-					Close and minimize buttons
-					<div class="chatbot-controls">
-						<button class="minimize-btn">_</button>
-						<button class="close-btn">x</button>
-					</div>
-				</header>
-				<ul class="chatbox">
-					<li class="chat incoming"><span
-						class="material-symbols-outlined">smart_toy</span>
-						<p>
-							Hi there 👋<br>How can I help you today?
-						</p></li>
-				</ul>
-				<div class="chat-input">
-					<textarea placeholder="Enter a message..." spellcheck="false"
-						required></textarea>
-					<span id="send-btn" class="material-symbols-rounded">send</span>
-				</div>
-			</div> -->
-			
-			
 		</div>
 	</div>
 

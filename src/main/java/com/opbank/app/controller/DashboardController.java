@@ -33,6 +33,7 @@ public class DashboardController {
 		long userId = userService.getUserInfo(user);
 		if (userId > 0) {
 			BankInfoDto bankInfoDto = bankService.getBankAccountInfo(userId);
+			bankInfoDto.setTotalBalance("$"+bankInfoDto.getTotalBalance());
 			model.addAttribute("accountInfo", bankInfoDto);
 			System.out.println(bankInfoDto.getOutFlow() + "outflow fromc controller");
 			return "dashboard";

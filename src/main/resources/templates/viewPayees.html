@@ -1,28 +1,17 @@
-<!-- dashboard.html -->
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">  -->
+<title>AOP Bank - Accounts</title>
 <link
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
-<link rel="stylesheet" th:href="@{static/styles/borderStyles.css}">
 <link rel="stylesheet" th:href="@{static/styles/ViewPayees.css}">
+<link rel="stylesheet" th:href="@{static/styles/borderStyles.css}">
+<link rel="stylesheet" th:href="@{static/styles/accountStyles.css}">
 <script defer th:src="@{static/js/payees.js}"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("tr:odd").css({
-			"background-color" : "#000",
-			"color" : "#fff"
-		});
-	});
-</script>
-<title>dashboard</title>
+<script defer th:src="@{static/js/chatbot.js}"></script>
 </head>
 <body>
 	<div class="fixed-header">
@@ -36,46 +25,71 @@
 			</nav>
 		</div>
 	</div>
+	<div class="content-area">
+		<div class="wrapper">
+			<div class="sidebar">
+				<h2>Menu</h2>
+				<ul>
+					<li><a class="menu_item" href="dashboard"><i
+							class="fa fa-home"></i> &nbsp; Home</a></li>
 
-	<div class="transaction-history-container">
-		<div class="table-add-hdr">
-			<h2>Payees List</h2>
-			<div class="zoom-span">
-				<button onclick="zoomIn()">Zoom In</button>
-				<button onclick="zoomOut()">Zoom Out</button>
+					<li><a class="menu_item" href="accounts"><i
+							class="fa fa-bank"></i> &nbsp; Accounts</a></li>
+
+					<li style="background: white;"><a class="menu_item"
+						href="fundsTransfer" style="color: black;"><i
+							class="fa fa-money"></i> &nbsp; Fund Transfer</a></li>
+
+					<li><a class="menu_item" href="statements"><i
+							class="fa fa-file-text-o"></i> &nbsp; Statements</a></li>
+
+					<li><a class="menu_item" href="cards"><i
+							class="fa fa-credit-card"></i> &nbsp; Bank cards</a></li>
+
+					<li><a class="menu_item" href="settings"><i
+							class="fa fa-cog"></i> &nbsp; Settings</a></li>
+				</ul>
 			</div>
-			
-			<p class="zoom-hdr">Zoom:</p>
-					<span class="magnifier" onclick="zoomIn()"> 🔍In</span>
-					<p class="zoom-hdr">|</p>
-					<span class="magnifier" onclick="zoomOut()"> 🔍Out</span>
 		</div>
 
-		<table class="table-container">
-			<thead class="table-dark">
-				<tr>
-					<th>S.No</th>
-					<th>Payee Name</th>
-					<th>Account Number</th>
-					<th>Bank</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="payeesList: ${payeesList}">
-					<td style="text-align: center;" th:text="${payeesList.id}"></td>
-					<td th:text="${payeesList.payeeName}"></td>
-					<td th:text="${payeesList.accountNo}"></td>
-					<td th:text="${payeesList.payeeBank}"></td>
-					<td><a class="disable-btn" href="#">Edit/Delete </a></td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="transaction-history">
+
+			<div class="table-add-hdr">
+				<h2>Payees List</h2>
+				<button class= "btn-hdr" onclick="zoomIn()">Zoom In</button>
+				<button class= "btn-hdr" onclick="zoomOut()">Zoom Out</button>
+			</div>
+			<div class="transaction-history-container">
+
+				<table class="table table-striped table-boardered">
+
+					<thead class="table-dark">
+						<tr>
+							<th style="text-align: center;">S.No</th>
+							<th>Payee Name</th>
+							<th>Account Number</th>
+							<th>Bank</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="payeesList: ${payeesList}">
+							<td style="text-align: center;" th:text="${payeesList.id}"></td>
+							<td th:text="${payeesList.payeeName}"></td>
+							<td th:text="${payeesList.accountNo}"></td>
+							<td th:text="${payeesList.payeeBank}"></td>
+							<td><button class="disable-btn">Update</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
 
 	<div class="fixed-footer">
-		<div class="container">Copyright &copy; 2023 AustraliaOldPeople
-			Bank</div>
+		<div class="container">Copyright &copy; 2023
+			AustraliaOldPeopleBank</div>
 	</div>
 </body>
 </html>
