@@ -10,17 +10,14 @@
 <link rel="stylesheet" th:href="@{static/styles/borderStyles.css}">
 <link rel="stylesheet" th:href="@{static/styles/accountStyles.css}">
 <script defer th:src="@{static/js/accounts.js}"></script>
-<script type="text/javascript">
-//This script should be placed before the closing </body> tag or inside the head within a <script> tag.
-document.addEventListener('DOMContentLoaded', function() {
-  // Check if the current page URL has 'accounts' in it
-  if (window.location.href.indexOf("accounts") > -1) {
-    // Get the menu item for accounts and add the 'active-menu-item' class
-    document.querySelector('a[href="accounts"]').parentNode.classList.add('active-menu-item');
-  }
-});
-
-</script>
+<!-- <script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function() {
+		if (window.location.href.indexOf("accounts") > -1) {
+			document.querySelector('a[href="accounts"]').parentNode.classList
+					.add('active-menu-item');
+		}
+	});
+</script> -->
 </head>
 <body>
 	<div class="fixed-header">
@@ -41,19 +38,21 @@ document.addEventListener('DOMContentLoaded', function() {
 			<ul>
 				<li><a class="menu_item" href="dashboard"><i
 						class="fa fa-home"></i> &nbsp; Home</a></li>
-						
-				<li style="background: white;"><a class="menu_item active-menu-item" href="accounts" style="color: black;"><i
-						class="fa fa-bank"></i> &nbsp; Accounts</a></li>
-						
+
+				<li style="background: white;"><a
+					class="menu_item active-menu-item" href="accounts"
+					style="color: black;"><i class="fa fa-bank"></i> &nbsp;
+						Accounts</a></li>
+
 				<li><a class="menu_item" href="fundsTransfer"><i
 						class="fa fa-money"></i> &nbsp; Fund Transfer</a></li>
-						
+
 				<li><a class="menu_item" href="statements"> <i
 						class="fa fa-file-text-o"></i> &nbsp; Statements
 				</a></li>
 				<li><a class="menu_item" href="cards"><i
 						class="fa fa-credit-card"></i> &nbsp; Bank cards</a></li>
-						
+
 				<li><a class="menu_item" href="settings"><i
 						class="fa fa-cog"></i> &nbsp; Settings</a></li>
 			</ul>
@@ -105,19 +104,19 @@ document.addEventListener('DOMContentLoaded', function() {
 								activity for this month
 							</p>
 							<br>
-							<p> In flow </p> <span class="bar-text"
-									th:text="'$' +${accountInfo.inFlow}">$1235.15 </span> 
+							<p>In flow</p>
 							<p class="bar in-bar"
-								th:style="'width: calc((' + ${accountInfo.inFlow} + ' / (' + ${accountInfo.inFlow} + ' + ' + ${accountInfo.outFlow} + ')) * 100%);'"> 
-								</p>
-								
-							
-							<p> Out flow </p>
+								th:style="'width: calc((' + ${accountInfo.inFlow} + ' / (' + ${accountInfo.inFlow} + ' + ' + ${accountInfo.outFlow} + ')) * 100%);'">
+								<span class="bar-text" th:text="'$' +${accountInfo.inFlow}">$1235.15
+							</span>
+							</p>
+
+
+							<p>Out flow</p>
 							<p class="bar out-bar"
 								th:style="'width: calc((' + ${accountInfo.outFlow} + ' / (' + ${accountInfo.inFlow} + ' + ' + ${accountInfo.outFlow} + ')) * 100%);'">
-								<span class="bar-text"
-									th:text="'$' +${accountInfo.outFlow}">$567.23</span>
-							</p> 
+								<span class="bar-text" th:text="'$' +${accountInfo.outFlow}">$567.23</span>
+							</p>
 						</div>
 					</div>
 				</section>

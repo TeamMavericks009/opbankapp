@@ -40,18 +40,6 @@ public class AccountsController {
 		return "addPayee";
 	}
 
-	@RequestMapping(value = "/getAllPayees", method = RequestMethod.GET)
-	public String getAllPayees(Model model) {
-		System.out.println("Inside get all payees");
-		List<FundTransferDto> payeesList = fundsService.getAllPayees(1);
-		if (payeesList != null) {
-			System.out.println("Inside payyesLIst if loop");
-			model.addAttribute("payeesList", payeesList);
-			return "accountSummary";
-		}
-		return "accountSummary";
-	}
-
 	@RequestMapping(value = "/accountSummary", method = RequestMethod.GET)
 	public String getAccountsSummary(Model model) {
 		System.out.println("inside accounts summary");

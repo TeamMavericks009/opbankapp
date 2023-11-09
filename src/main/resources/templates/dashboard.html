@@ -9,6 +9,7 @@
 <link rel="stylesheet" th:href="@{static/styles/borderStyles.css}">
 <link rel="stylesheet" th:href="@{static/styles/try.css}">
 <script defer th:src="@{static/js/dashboard.js}"></script>
+<script defer th:src="@{static/js/chatbot.js}"></script>
 <script th:inline="javascript">
     /*<![CDATA[*/
     var balance = /*[[${accountInfo.totalBalance}]]*/ 'defaultBalance';
@@ -16,7 +17,6 @@
     var fullName = /*[[${accountInfo.fullName}]]*/ 'Account Holder name';
     /*]]>*/
 </script>
-
 <title>dashboard</title>
 </head>
 <body>
@@ -63,47 +63,47 @@
 
 	<div class="dashboard_block">
 		<div class="dashboard">
-			<div class="back-login">
+			<div class="option">
 				<a href="accounts" class="btn_href">
 					<button onclick="postAndNavigate()" class="dashboard-button"
-					th:style="'background-image: url('+ @{static/images/accounts.png} +');'"></button> </a>
+					th:style="'background-image: url('+ @{static/images/Savingsaccounts.jpg} +');'"></button> </a>
 					<label>Accounts</label>
 			</div>
 			
 			<div class="option">
 				<a href="fundsTransfer" class="btn_href">
 				<button onclick="navigate('fundsTransfer')" class="dashboard-button"
-					th:style="'background-image: url('+ @{static/images/transactions.png} +');'"></button> </a>
-				<label>Transactions</label>
+					th:style="'background-image: url('+ @{static/images/fundstransfer.jpeg} +');'"></button> </a>
+				<label>Fund Transfer</label>
 			</div>
 			<div class="option">
 			<a href="statements" class="btn_href">
 				<button onclick="navigate('statements')" class="dashboard-button"
-					th:style="'background-image: url('+ @{static/images/statements.jpg} + ');'"></button> </a>
+					th:style="'background-image: url('+ @{static/images/calendar.jpg} + ');'"></button> </a>
 				<label>Statements</label>
 			</div>
 			<div class="option">
 			<a href="cards" class="btn_href">	<button onclick="navigate('cards')" class="dashboard-button"
-					th:style="'background-image: url('+ @{static/images/cards.jpg} +');'"></button> </a>
+					th:style="'background-image: url('+ @{static/images/debit-card.png} +');'"></button> </a>
 				<label>Bank Cards</label>
 			</div>
 			<div class="option">
 				<button onclick="navigate('help')" class="dashboard-button"
 					th:style="'background-image: url('+ @{static/images/help.jpg} +');'"></button>
-				<label>Help</label>
+				<label>Settings</label>
 			</div>
 
-			<button class="chatbot-toggler">
+			<!-- <button class="chatbot-toggler">
 				<span class="material-symbols-rounded">
 					<p class="bot_info">Hi, I am Ava, click on me for help :)</p> <img
 					th:src="@{static/images/avatar2.png}" alt="test" class="avatar">
 				</span> <span class="close_text">close</span>
-			</button>
+			</button> -->
 
-			<div class="chatbot">
+			<!-- <div class="chatbot">
 				<header>
 					<h2>Chatbot</h2>
-					<!-- Close and minimize buttons -->
+					Close and minimize buttons
 					<div class="chatbot-controls">
 						<button class="minimize-btn">_</button>
 						<button class="close-btn">x</button>
@@ -121,7 +121,9 @@
 						required></textarea>
 					<span id="send-btn" class="material-symbols-rounded">send</span>
 				</div>
-			</div>
+			</div> -->
+			
+			
 		</div>
 	</div>
 

@@ -52,12 +52,15 @@
 		<div class="container_box">
 			<div class="search-section">
 				<h2 class="hdr_Statements">Transfer funds to payees</h2>
-				<form action="#" th:action="@{/fund_transfer}" method="POST" class="login-form" th:object="${FundTransfer}">
+				<form action="#" th:action="@{/fund_transfer}" method="POST" class="login-form" th:object="${fundsTransfer}">
 				<div class="search-field">
 					<label for="PayeeName">Payee name</label> <!-- <input id="payeeName"
 					name="payeeName" type="text" th:field="*{payeeName}" placeholder="Enter your username" required> -->
 					<select> <option value="">Select payees</option>
-						<option value="1">Isha Reddy</option>
+						<!-- <option value="1">Isha Reddy</option> -->
+						
+						<option th:each="payee : ${payees}" th:text="${payee.payeeName}">Payee Name</option>
+						
 						</select>
 				</div>
 				<div class="search-field">

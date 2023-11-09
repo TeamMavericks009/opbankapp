@@ -1,18 +1,8 @@
-function navigate(pageName){
-    // Navigation logic...
-}
-
-function sendMessage() {
-    var userInput = document.getElementById('userInput').value;
-    // Additional sendMessage code...
-}
-
-document.querySelector('.dashboard .option button[onclick="navigate(\'help\')"]').addEventListener('click', function() {
-    var chatbot = document.getElementById('chatbot');
-    chatbot.classList.toggle('chatbot-hidden');
-});
-
-document.getElementById('minimizeBtn').addEventListener('click', function() {
-    var chatbot = document.getElementById('chatbot');
-    chatbot.classList.toggle('chatbot-hidden');
-});
+(function(d, m) {
+	var kommunicateSettings =
+		{ "appId": "117713c1473bc58e886d2b90f86228ae1", "popupWidget": true, "automaticChatOpenOnNavigation": true };
+	var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+	s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+	var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+	window.kommunicate = m; m._globals = kommunicateSettings;
+})(document, window.kommunicate || {});

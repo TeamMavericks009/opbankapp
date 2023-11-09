@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,7 @@ public class TransactionController {
 	@Autowired
 	FundTransferService fundsTransferService;
 
+	
 	@RequestMapping(value = "/user_transactions", method = RequestMethod.GET)
 	public String userDashboard(Model model) {
 		model.addAttribute("user", new UserLogin());
@@ -38,9 +40,11 @@ public class TransactionController {
 	}
 
 	@PostMapping("/fund_transfer")
-	public String fundTransfer(@ModelAttribute("FundTransfer") FundTransferDto fundsDto,
-			RedirectAttributes redirectAttr) throws Exception {
+	public String fundTransfer(@ModelAttribute("FundsTransfer") FundTransferDto fundsDto,
+			RedirectAttributes redirectAttr, BindingResult result) throws Exception {
 		String msg = "Error while transfering funds";
+		System.out.println("funds post");
+	
 		if (transactionService.fundTransfer(fundsDto)) {
 			msg = "Money transfer to " + fundsDto.getPayeeName() + " is succesful";
 		}
@@ -48,10 +52,25 @@ public class TransactionController {
 		return "fundsTransfer";
 	}
 
+	
 	@RequestMapping(value = "/fundsTransfer", method = RequestMethod.GET)
-	public String getFundTransfer(Model model) {
-		model.addAttribute("FundTransfer", new FundTransferDto());
-		System.out.println("inside fund transfer summary");
-		return "fundsTransfer";
+	public String getFundTransfer(Model model, RedirectAttributes redirectAttr) {
+		System.out.println("Inside funds get method");
+		List<FundTransferDto> payeeList = fundsTransferService.getAllPayees(1);
+		model.addAttribute("payees",payeeList);
+	    if (!model.containsAttribute("fundsTransfer")) {
+	        model.addAttribute("fundsTransfer", new FundTransferDto());
+	    }
+	    
+	    List<TransactionDto> transList = transactionService.getAllUserTransactions(1);
+		System.out.println(transList.size() + " Size of list");
+		System.out.println(transList.get(0).getTransactionNo());
+
+		model.addAttribute("transaction", transList);
+	    
+	    // The rest of your code to add payees to the model
+	    return "fundsTransfer";
 	}
+	
+	 
 }
