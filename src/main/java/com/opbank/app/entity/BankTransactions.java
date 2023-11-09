@@ -8,8 +8,10 @@ import org.springframework.data.annotation.Immutable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name= "v_bank_transactions")
 @Immutable
 public class BankTransactions {
 	@Id

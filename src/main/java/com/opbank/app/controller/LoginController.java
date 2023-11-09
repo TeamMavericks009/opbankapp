@@ -40,9 +40,12 @@ public class LoginController {
 		System.out.println("inside show registration form");
 		String msg = "";
 		try {
-			userService.save(registerDto);
+			boolean isSaved = userService.save(registerDto);
 			System.out.println("Updated register user");
-			msg = " You have successfully registered, please go back and login to your account";
+			if (isSaved)
+				msg = "✓  You have successfully registered, please go back and login to your account";
+			else
+				msg = "✕ Already have an account, please go back and login to your account";
 		} catch (Exception e) {
 			System.out.println("Inside controller post method exception");
 			msg = " There is an error registering your profile, please contact customer support";
@@ -78,10 +81,11 @@ public class LoginController {
 			userService.forgotPassword(registerDto);
 			System.out.println("Updated register user");
 			msg = " You have successfully resetted your password, please go back and login to your account";
+			redirectAttr.addFlashAttribute("message", msg);
 		} catch (Exception e) {
 			System.out.println("Inside controller post method exception");
 			msg = " There is an error resetting your profile, please contact customer support";
-			e.printStackTrace();
+			redirectAttr.addFlashAttribute("message", msg);
 		}
 		redirectAttr.addFlashAttribute("message", msg);
 		return "redirect:/login";

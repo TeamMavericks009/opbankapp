@@ -3,26 +3,25 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login</title>
-<link rel="stylesheet" th:href="@{static/borderStyles.css}" />
-<link rel="stylesheet" th:href="@{static/loginPage.css}" />
-<script defer th:src="@{static/login-page.js}"></script>
+<link rel="stylesheet" th:href="@{static/styles/borderStyles.css}" />
+<link rel="stylesheet" th:href="@{static/styles/loginPage.css}" />
+<script defer th:src="@{static/js/login-page.js}"></script>
 <link
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
-<!--  <script defer th:src="@{static/login-page.js}"></script> -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 	<div class="fixed-header">
 		<div class="container">
 			<div class="logo-container">
-				<img th:src="@{static/bank_logo.png}" alt="Logo" class="logo">
+				<img th:src="@{static/images/bank_logo.png}" alt="Logo" class="logo">
 			</div>
 			<nav>
 				<a href="#">About Us</a> <a href="#">Contact Us</a>
 			</nav>
 		</div>
 	</div>
-
 
 	<div class="wrapper">
 		<form action="#" th:action="@{/dashboard}" method="POST"
@@ -47,12 +46,13 @@
 						class="input-field" type="password"
 						th:field="*{encryptedPassword}" placeholder="Enter your password">
 		</div>
-				<span class="error-message" id="passwordError"></span>
-				
 			</div>
 
 			<button type="submit" class="btn">Submit</button> <br>
-			<span class="flash-msg" th:text="${loginError}"></span>
+			<span class="flash-msg" th:text="${loginError}"> 
+				<i class='fa fa-exclamation-triangle' style='font-size:48px;color:red'></i> 
+			</span>
+			<span class="flash-msg" th:text="${message}"> </span>
 
 			<h2>Did you forget your username or password??</h2>
 			<button id="forgotPassword" onclick="navigateToForgotPassword(event)" class="btn" >Click Here</button>

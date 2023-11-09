@@ -3,10 +3,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login</title>
-<link rel="stylesheet" th:href="@{static/borderStyles.css}" />
-<link rel="stylesheet" th:href="@{static/registerStyles.css}" />
-<link rel="stylesheet" th:href="@{static/RegoStyles.css}" />
-<script defer th:src="@{static/login-page.js}"></script>
+<link rel="stylesheet" th:href="@{static/styles/borderStyles.css}" />
+<link rel="stylesheet" th:href="@{static/styles/RegoStyles.css}" />
+<script defer th:src="@{static/js/login-page.js}"></script>
 <link
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
@@ -15,7 +14,7 @@
 	<div class="fixed-header">
 		<div class="container">
 			<div class="logo-container">
-				<img th:src="@{static/bank_logo.png}" alt="Logo" class="logo">
+				<img th:src="@{static/images/bank_logo.png}" alt="Logo" class="logo">
 			</div>
 			<nav>
 				<a href="#">About Us</a> <a href="#">Contact Us</a>
@@ -27,29 +26,33 @@
 			<div class='row'>
 				<div class="message">
 					<div th:if="${param.success}">
+						<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
 						<div class="alert alert-info">You've successfully registered</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<form action="#"  th:action="@{/registration}" method="POST" class="login-form" th:object="${UserRegistration}">
-		
+		<form action="#" th:action="@{/registration}" method="POST"
+			class="login-form" th:object="${UserRegistration}">
+
 			<h2>Registration Form</h2>
 			<div class="form-group">
-				 <label for="username">Username</label>
-				 <input id="username" name="Username" type="text" th:field="*{userName}" 
-				 placeholder="Enter your username" required>
+				<label for="username">Username</label> <input id="username"
+					name="Username" type="text" th:field="*{userName}"
+					placeholder="Enter your username" required>
 			</div>
 
 			<div class="form-group">
 				<label for="password">Temporary</label> <input type="password"
-					id="temp_password" placeholder="temporary password" th:field="*{tempPassword}" required>
+					id="temp_password" placeholder="temporary password"
+					th:field="*{tempPassword}" required>
 			</div>
 
 			<div class="form-group">
 				<label for="password">New Password</label> <input type="password"
-					id="password" placeholder="Password" th:field="*{newPassword}" required>
+					id="password" placeholder="Password" th:field="*{newPassword}"
+					required>
 			</div>
 			<div class="form-group">
 				<label for="confirmPassword">Confirm Password</label> <input
@@ -59,7 +62,8 @@
 
 			<div class="form-group">
 				<label for="password">Security pin</label> <input type="password"
-					id="secure_pin" placeholder="secure_pin" th:field="*{securePin}"  required>
+					id="secure_pin" placeholder="secure_pin" th:field="*{securePin}"
+					required>
 			</div>
 
 			<div class="form-group">
@@ -75,9 +79,11 @@
 
 		<div class="thin-line"></div>
 		<div class="text-and-button">
-			<span class="flash-msg" th:text="${message}"></span>
+			<span class="flash-msg" th:text="${message}"> </span>
 			<div class="back-login">
-				<a href="login" class="btn_href">Go to Login</a>
+				<a href="login" class="btn_href">
+					<buttonc class="btn_login">Go to Login</button>
+				</a>
 			</div>
 			<p class="newUsersPara">
 				If you do not know or forget your temporary password, kindly reach
@@ -85,7 +91,6 @@
 				email support@aop.com
 			</p>
 		</div>
-
 	</div>
 
 	<div class="fixed-footer">

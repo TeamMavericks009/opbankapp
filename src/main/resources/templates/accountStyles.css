@@ -174,3 +174,8 @@ body {
 	background-color: white;
 	padding: 5px 5px;	
 }
+
+.active-menu-item {
+  background-color: white;
+  color: black;
+}

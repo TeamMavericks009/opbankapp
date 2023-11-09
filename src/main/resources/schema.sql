@@ -1,3 +1,4 @@
+
 /*
  * Author      : Sarika Kondakindi
  * JIRA        : ELDHLP-67
@@ -25,10 +26,10 @@ grant all privileges on database opbank to dbo;
 grant all on schema dbo to dbo;
 create extension pgcrypto; */
 
-DROP VIEW if exists dbo.v_current_month_transaction_summary;
-
 /* Initial table drop */
 drop view if exists dbo.bank_transactions;
+drop view if exists dbo.v_bank_transactions;
+drop view if exists dbo.v_current_month_transaction_summary;
 drop table if exists dbo."transaction";
 drop table if exists dbo.transactions;
 drop table if exists dbo.transaction_type;
@@ -119,7 +120,7 @@ create table if not exists dbo.users(user_id       bigint,
                                      updated_by    varchar(50),
                                      updated_date  timestamptz,
                                      constraint users_pk primary key(user_id),
-                                     constraint users_ak unique(user_name),
+                                     constraint users_user_name_ak unique(user_name),
                                      constraint users_address_id_fk foreign key (address_id) references dbo.address(address_id),
                                      constraint users_gender_ck check (gender in ('Male', 'Female', 'Other/Non-Binary', 'Prefer not to say')) ,
                                      constraint users_email_ck check ((email is null and phone_number is not null) or (email is not null and phone_number is null) or (email is not null and phone_number is not null))
@@ -231,7 +232,7 @@ create table if not exists dbo.user_login(user_login_id         bigint,
     									 -- constraint user_login_login_id_ak unique(login_id),
     									  constraint user_login_user_name_ak unique(user_name),
     									  constraint user_login_user_login_id_fk foreign key(user_login_id) references dbo.users(user_id),
-    									  constraint user_login_user_user_name_fk foreign key(user_name) references dbo.users(user_name)
+    									  constraint user_login_user_name_fk foreign key(user_name) references dbo.users(user_name)
 									      );
 create sequence if not exists dbo.user_login_seq as bigint 
                  increment by 1 
@@ -491,12 +492,12 @@ create sequence if not exists dbo.transactions_seq as bigint
                      minvalue 1 
                    start with 1 
                      owned by dbo.transactions.transaction_id; 
-                     
-alter table dbo.transactions alter column transaction_id set default  nextval('dbo.transactions_seq');
 					 
 /* VIEW Queries*/
 
-create or replace view dbo.bank_transactions as 
+/* Get tansactions upon userId
+                      * */
+create or replace view dbo.v_bank_transactions as 
 select t.transaction_id,
        u.user_id, concat(u.first_name||' ', u.last_name) as primary_name,
        lp.full_name_of_payee as participant_name,
@@ -563,3 +564,10 @@ group by user_id,
          user_name, 
          primary_name;
 			 
+
+
+
+
+
+
+

@@ -15,8 +15,6 @@ import com.opbank.app.entity.UserLogin;
 import com.opbank.app.service.BankService;
 import com.opbank.app.service.UserService;
 
-import jakarta.servlet.http.HttpSession;
-
 @Controller
 @SessionAttributes("accountInfo")
 public class DashboardController {
@@ -36,7 +34,7 @@ public class DashboardController {
 		if (userId > 0) {
 			BankInfoDto bankInfoDto = bankService.getBankAccountInfo(userId);
 			model.addAttribute("accountInfo", bankInfoDto);
-			System.out.println(model);
+			System.out.println(bankInfoDto.getOutFlow() + "outflow fromc controller");
 			return "dashboard";
 		}
 		redirectAttr.addFlashAttribute("loginError", "Invalid username or password, please try again.");

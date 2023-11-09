@@ -25,16 +25,23 @@ public class UserServiceImpl implements UserService {
 		return userRepository.save(userLogin);
 	}
 
-	public UserRegistration save(UserRegistrationDto userRegistrationDTO) throws Exception {
+	public boolean save(UserRegistrationDto userRegistrationDTO) throws Exception {
 		System.out.println("Inside service impl of save register");
 		UserRegistration userRegister = fetchRegisteredUser(userRegistrationDTO);
-		if (userRegister != null) {
-			System.out.println(userRegister.getBankAccountId() + " ********Bank acct id ");
-			userRegister.setPassword(userRegistrationDTO.getNewPassword());
-			userRegister.setSecurityPin(Integer.valueOf(userRegistrationDTO.getSecurePin()));
-			userRegister.setAccountResetFlag(true);
-			return userRegisterRepo.save(userRegister);
-		} else {
+		
+		if(userRegister != null && userRegister.isAccountResetFlag()) {
+			return false;
+		}
+		
+		if (userRegister != null && !userRegister.isAccountResetFlag()) {
+				System.out.println(userRegister.getBankAccountId() + " ********Bank acct id ");
+				userRegister.setPassword(userRegistrationDTO.getNewPassword());
+				userRegister.setSecurityPin(Integer.valueOf(userRegistrationDTO.getSecurePin()));
+				userRegister.setAccountResetFlag(true);
+				userRegisterRepo.save(userRegister);
+				return true;
+		} 
+		else {
 			throw new Exception("No user available");
 		}
 	}

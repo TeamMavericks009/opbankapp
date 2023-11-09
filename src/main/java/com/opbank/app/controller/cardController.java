@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class cardController {
 
-	@RequestMapping(value = "/viewCards", method = RequestMethod.GET)
+	@RequestMapping(value = "/cards", method = RequestMethod.GET)
 	public String getAccountsSummary(Model model) {
 		System.out.println("inside bank cards page");
 		return "cards";

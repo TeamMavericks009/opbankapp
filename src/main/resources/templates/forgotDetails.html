@@ -3,10 +3,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login</title>
-<link rel="stylesheet" th:href="@{static/borderStyles.css}" />
-<link rel="stylesheet" th:href="@{static/loginPage.css}" />
-<link rel="stylesheet" th:href="@{static/RegoStyles.css}" />
-<script defer th:src="@{static/login-page.js}"></script>
+<link rel="stylesheet" th:href="@{static/styles/borderStyles.css}" />
+<link rel="stylesheet" th:href="@{static/styles/loginPage.css}" />
+<link rel="stylesheet" th:href="@{static/styles/ForgotPassword.css}" />
+<script defer th:src="@{static/js/login-page.js}"></script>
 <link
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
@@ -16,7 +16,7 @@
 	<div class="fixed-header">
 		<div class="container">
 			<div class="logo-container">
-				<img th:src="@{static/bank_logo.png}" alt="Logo" class="logo">
+				<img th:src="@{static/images/bank_logo.png}" alt="Logo" class="logo">
 			</div>
 			<nav>
 				<a href="#">About Us</a> <a href="#">Contact Us</a>
@@ -27,7 +27,7 @@
 	<form action="#" th:action="@{/forgotPassword}" method="POST"
 		class="login-form" th:object="${UserRegistration}">
 
-		<h2>Registration Form</h2>
+		<h2>Reset your password here</h2>
 			<div class="form-group">
 				 <label for="username">Username</label>
 				 <input id="username" name="Username" type="text" th:field="*{userName}" 

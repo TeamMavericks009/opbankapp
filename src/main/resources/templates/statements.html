@@ -6,15 +6,15 @@
 <title>AOP Bank - Accounts</title>
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
-<link rel="stylesheet" th:href="@{static/Statementstyles.css}">
-<link rel="stylesheet" th:href="@{static/borderStyles.css}">
-<link rel="stylesheet" th:href="@{static/accountStyles.css}">
+<link rel="stylesheet" th:href="@{static/styles/Statementstyles.css}">
+<link rel="stylesheet" th:href="@{static/styles/borderStyles.css}">
+<link rel="stylesheet" th:href="@{static/styles/accountStyles.css}">
 </head>
 <body>
 	<div class="fixed-header">
 		<div class="container">
 			<div class="logo-container">
-				<img th:src="@{static/bank_logo.png}" alt="Logo" class="logo">
+				<img th:src="@{static/images/bank_logo.png}" alt="Logo" class="logo">
 			</div>
 			<nav>
 				<a href="#">About Us</a> <a href="#">Contact Us</a> <a href="#">Log
@@ -29,13 +29,20 @@
 				<ul>
 					<li><a class="menu_item" href="dashboard"><i
 							class="fa fa-home"></i> &nbsp; Home</a></li>
+						
+					<li><a class="menu_item" href="accounts"><i
+						class="fa fa-bank"></i> &nbsp; Accounts</a></li>		
+							
 					<li><a class="menu_item" href="fundsTransfer"><i
 							class="fa fa-money"></i> &nbsp; Fund Transfer</a></li>
-					<li><a class="menu_item" href="statements"><i
+							
+					<li style="background: white;"><a class="menu_item" href="statements" style="color: black;"><i
 							class="fa fa-file-text-o"></i> &nbsp; Statements</a></li>
-					<li><a class="menu_item" href="#"><i
+							
+					<li><a class="menu_item" href="cards"><i
 							class="fa fa-credit-card"></i> &nbsp; Bank cards</a></li>
-					<li><a class="menu_item" href="#"><i class="fa fa-cog"></i>
+							
+					<li><a class="menu_item" href="settings"><i class="fa fa-cog"></i>
 							&nbsp; Settings</a></li>
 				</ul>
 			</div>
