@@ -14,26 +14,52 @@ import com.opbank.app.dto.UserRegistrationDto;
 import com.opbank.app.entity.UserLogin;
 import com.opbank.app.service.UserService;
 
+/**
+* <h1>Login Controller</h1>
+* This controller is called upon launching login page for AOP Bank
+* Handles POST and GET methods
+* response will be given Model Attribute and Templates source
+* <p>
+* 
+*
+* @author  Preethi Sreeramula
+* @version 4.0
+* @since   2023-10-17
+*/
 @Controller
 public class LoginController {
 
 	@Autowired
 	private UserService userService;
 
+	/** 
+	   * This method is to display login page 
+	   * A GET method,
+	   * @param Model,
+	   * @return login template
+	   * */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String displayLogin(Model model) {
-		System.out.println("inside login get method");
 		model.addAttribute("user", new UserLogin());
-		System.out.println(model.getAttribute("user"));
 		return "login";
 	}
 
+	/** 
+	   * This method to add UserRegistrationDto to Model attribute
+	   * @return UserRegistrationDto Object
+	   * */
 	@ModelAttribute("UserRegistration")
 	public UserRegistrationDto userRegistrationDTO() {
-		System.out.println("Inside user register dto");
 		return new UserRegistrationDto();
 	}
 
+
+	/** 
+	   * This method calls upon registering for first time 
+	   * A POST method,
+	   * @param UserRegistrationDto,
+	   * @return carrying Redirect Attributes, loads register template
+	   * */
 	@PostMapping("/registration")
 	public String registerUser(@ModelAttribute("UserRegistration") UserRegistrationDto registerDto,
 			RedirectAttributes redirectAttr) {
@@ -55,23 +81,43 @@ public class LoginController {
 		return "redirect:/register";
 	}
 
+	/** 
+	   * This method is post registration when user navigated to Login page 
+	   * A GET method,
+	   * @param Model,
+	   * @return Model attribute carry userLogin
+	   * */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String afterRegister(Model model) {
 		model.addAttribute("user", new UserLogin());
-		System.out.println("inside login get method after register");
 		return "login";
 	}
 
+	/** 
+	   * Get method to load registration template
+	   * @param Model,
+	   * @return template string Registration
+	   * */
 	@GetMapping("/register")
 	public String showRegistrationForm(Model model) {
 		return "Registration";
 	}
 
+	/** 
+	   * Get method to load  forgot password page
+	   * @param Model,
+	   * @return String template forgotDetails
+	   * */
 	@GetMapping("/forgotDetails")
 	public String showForgotDetailsForm(Model model) {
 		return "forgotDetails";
 	}
 
+	/** 
+	   * POST method to carry forgot password details
+	   * @param UserRegistrationDto,
+	   * @return Add flast attributes for message, redirect to login
+	   * */
 	@PostMapping("/forgotPassword")
 	public String forgotUser(@ModelAttribute("UserRegistration") UserRegistrationDto registerDto,
 			RedirectAttributes redirectAttr) {

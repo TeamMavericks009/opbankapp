@@ -15,6 +15,18 @@ import com.opbank.app.entity.UserLogin;
 import com.opbank.app.service.BankService;
 import com.opbank.app.service.UserService;
 
+/**
+* <h1>Dashboard Controller</h1>
+* This controller is called upon succesfull login into AOP Bank
+* Handles POST and GET methods
+* response will be given Model Attribute and Templates source
+* <p>
+* 
+*
+* @author  Preethi Sreeramula
+* @version 4.0
+* @since   2023-10-17
+*/
 @Controller
 @SessionAttributes("accountInfo")
 public class DashboardController {
@@ -25,6 +37,13 @@ public class DashboardController {
 	@Autowired
 	private BankService bankService;
 
+	
+	/** 
+	   * Read login form information, validates user login 
+	   * A POST method, carry login details
+	   * @param Model, UserInfoDto model
+	   * @return upon conditional check Dashboard or redirect to Login Templates
+	   * */
 	@RequestMapping(value = "/dashboard", method = RequestMethod.POST)
 	public String Login(Model model, @ModelAttribute UserInfoDto user, RedirectAttributes redirectAttr) {
 
@@ -43,6 +62,12 @@ public class DashboardController {
 		return "redirect:/login";
 	}
 
+	/** 
+	   * Loads Dashboard template 
+	   * A GET method, carry login details
+	   * @param Model, UserInfoDto model
+	   * @return dashboard template
+	   * */
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
 	public String userDashboard(Model model) {
 		model.addAttribute("user", new UserLogin());
@@ -50,19 +75,29 @@ public class DashboardController {
 		return "dashboard";
 	}
 
+	
+	/** 
+	   * Loads account template 
+	   * GET method returns Bank details
+	   * @param Model, UserInfoDto model
+	   * @return dashboard template
+	   * */
 	@RequestMapping(value = "/accounts", method = RequestMethod.GET)
 	public String afterRegister(Model model) {
 		model.addAttribute("user", new UserLogin());
 		BankInfoDto bankInfoDto = bankService.getBankAccountInfo(1);
 		model.addAttribute("accountInfo", bankInfoDto);
-		System.out.println("inside accounts GEt method");
 		return "accounts";
 	}
 
+	/** 
+	   * Loads statements template 
+	   * @param Model, 
+	   * @return statements template
+	   * */
 	@RequestMapping(value = "/statements", method = RequestMethod.GET)
 	public String statements(Model model) {
 		model.addAttribute("user", new UserLogin());
-		System.out.println("inside accounts GEt method");
 		return "statements";
 	}
 }

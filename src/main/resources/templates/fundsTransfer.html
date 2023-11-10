@@ -54,33 +54,33 @@
 			<div class="search-section">
 				<h2 class="hdr_Statements">Transfer funds to payees</h2>
 				<form action="#" th:action="@{/fund_transfer}" method="POST" class="login-form" th:object="${fundsTransfer}">
+				
 				<div class="search-field">
-					<label for="PayeeName">Payee name</label> <!-- <input id="payeeName"
-					name="payeeName" type="text" th:field="*{payeeName}" placeholder="Enter your username" required> -->
-					<select> <option value="">Select payees</option>
-						<!-- <option value="1">Isha Reddy</option> -->
+					<label for="PayeeName">Payee name</label>
+					<select> <option th:value="${payeeName}">Select payees</option>
 						
 						<option th:each="payee : ${payees}" th:text="${payee.payeeName}">Payee Name</option>
-						
 						</select>
 				</div>
+				
 				<div class="search-field">
-					<label for="amount">Amount to transfer</label> <input id="amount"
+					<label for="amount">Amount to transfer</label> 
+					<input id="amount"
 					name="amount" type="text" th:field="*{amountToTransfer}" placeholder="Enter amount to transfer" required>
 				</div>
+				
 				<div class="search-field">
 					<label for="amount">Enter remarks</label> <input id="remarks"
 					name="remarks" type="text" th:field="*{description}" placeholder="Enter description" required>
 				</div>
+				
 				<input class = "submit_btn" type="submit" value="SUBMIT">
 				<button onclick="clearSearch()">Clear</button>
 				</form>
 			</div>
-			
 
 			<div class="transaction-history">
 				<h2>Transaction History</h2>
-				
 				<div class="row">
 					<h1>Transactions list</h1>
 				</div>

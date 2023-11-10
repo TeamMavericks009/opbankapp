@@ -52,15 +52,12 @@ public class TransactionServiceImpl implements TransactionService {
 		List<Transaction> dataTrasactions = transactionRepo.findByUserId(user_id);
 
 		List<Transaction> testTrasactions = transactionRepo.findByUserIdAndStatus(user_id, "Success");
-		System.out.println(testTrasactions.size() + " **********size of success transactions");
 
 		List<BankTransactions> viewTransaction = bankTransactionsRepo.findByUserId(1);
-		System.out.println(viewTransaction.size() + " **********VIEW************");
 
 		try {
 			List<BankTransactions> periodTransactions = bankTransactionsRepo.findByUserIdAndTransactionDateBetween(1,
 					converToDate("2023-10-18"), converToDate("2023-10-19"));
-			System.out.println(periodTransactions.size() + " **********Date Transaction_FROM VIEW************");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -112,7 +109,7 @@ public class TransactionServiceImpl implements TransactionService {
 	private boolean saveTransaction(long userId, FundTransferDto fundsDto, long userBankId, float actualBalance) {
 
 		long maxTransactionNum = transactionRepo.findMaxTransactionNoByUserId(userId);
-		LinkedPayee payee = payeeRepo.findByPayeeName(fundsDto.getPayeeName());
+		LinkedPayee payee = payeeRepo.findByPayeeName("Isha Reddy");
 		Transaction obj = new Transaction();
 		obj.setUserId(userId);
 		obj.setTransactionNo(maxTransactionNum + 1);

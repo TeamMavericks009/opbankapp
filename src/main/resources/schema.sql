@@ -492,6 +492,8 @@ create sequence if not exists dbo.transactions_seq as bigint
                      minvalue 1 
                    start with 1 
                      owned by dbo.transactions.transaction_id; 
+                     
+alter table dbo.transactions alter column transaction_id set default  nextval('dbo.transactions_seq');
 					 
 /* VIEW Queries*/
 

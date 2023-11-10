@@ -861,3 +861,4 @@ INSERT INTO dbo.transactions
 VALUES(378, 37564681, 5, 2, 1, 90.0000, NULL, 46748.0000, 'Success', 5, '2023-11-04 15:08:00.000', 'Debit Withdrawal', 'dbo', '2023-11-09 13:35:31.295', NULL, NULL);
 
 select setval('dbo.transactions_seq', (SELECT max(transaction_id) FROM dbo.transactions), true);
+

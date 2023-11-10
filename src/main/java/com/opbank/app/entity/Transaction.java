@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class Transaction {
 
 	@Id
-	@Column(name = "transaction_id", updatable = false, nullable = false)
+	@Column(name = "transaction_id", updatable = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 

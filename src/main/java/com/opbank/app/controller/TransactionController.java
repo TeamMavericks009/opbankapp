@@ -18,6 +18,18 @@ import com.opbank.app.entity.UserLogin;
 import com.opbank.app.service.FundTransferService;
 import com.opbank.app.service.TransactionService;
 
+/**
+* <h1>Transaction Controller</h1>
+* This controller is called for the user to handle settings
+* Handles POST and GET methods
+* response will be given Model Attribute and Templates source
+* <p>
+* 
+*
+* @author  Preethi Sreeramula
+* @version 4.0
+* @since   2023-10-27
+*/
 @Controller
 public class TransactionController {
 
